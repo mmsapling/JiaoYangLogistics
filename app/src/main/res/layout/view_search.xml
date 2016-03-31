@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dsearch_width"
+    android:layout_height="@dimen/dsearch_height"
+    android:background="@drawable/shape_dsearchview_bg">
+
+    <ImageView
+        android:id="@+id/dsearch_search"
+        android:layout_width="@dimen/dsearch_search_size"
+        android:layout_height="@dimen/dsearch_search_size"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dsearch_margin"
+        android:scaleType="fitXY"
+        android:src="@mipmap/search" />
+
+    <EditText
+        android:id="@+id/dsearch_edittext"
+        android:layout_width="@dimen/dsearch_width"
+        android:layout_height="@dimen/dsearch_height"
+        android:layout_toRightOf="@+id/dsearch_search"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dsearch_margin"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
+        android:textSize="@dimen/normal_textsize"
+        android:hint="@string/dsearch_hint" />
+
+    <ImageView
+        android:id="@+id/dsearch_error"
+        android:layout_width="@dimen/dsearch_error_size"
+        android:layout_height="@dimen/dsearch_error_size"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dsearch_margin"
+        android:scaleType="fitXY"
+        android:src="@mipmap/error" />
+</RelativeLayout>

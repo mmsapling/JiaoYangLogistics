@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/item_frient_tv_sort"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/item_bg_sort"
+        android:paddingBottom="@dimen/padding"
+        android:paddingLeft="@dimen/padding"
+        android:paddingTop="@dimen/padding"
+        android:textColor="@color/item_friend" />
+
+    <TextView
+        android:id="@+id/item_frient_tv_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:background="@mipmap/bg_cut_line" />
+
+    <LinearLayout
+        android:id="@+id/item_frient_container_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/padding"
+        android:paddingLeft="@dimen/btn_padding2"
+        android:paddingRight="@dimen/btn_padding2"
+        android:paddingTop="@dimen/padding" >
+
+        <ImageView
+            android:id="@+id/item_frient_civ_head"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@mipmap/bg_head" />
+
+        <TextView
+            android:id="@+id/item_frient_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_5"
+            android:gravity="center_vertical"
+            android:text="天涯浪子"
+            android:textColor="@color/item_friend_color"
+            android:textSize="@dimen/textsize_level2" />
+        <TextView
+            android:id="@+id/item_frient_tv_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_5"
+            android:text="13552304622"
+            android:gravity="center_vertical"
+            android:textColor="@color/item_friend_color"
+            android:textSize="@dimen/textsize_level2" />
+    </LinearLayout>
+
+</LinearLayout>

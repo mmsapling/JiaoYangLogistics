@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_msg_icon_width"
+                android:background="@drawable/selector_bg">
+
+    <ImageView
+        android:id="@+id/item_msg_iv_icon"
+        android:layout_width="@dimen/item_msg_icon_width"
+        android:layout_height="@dimen/item_msg_icon_height"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/item_msg_icon_marginlr"
+        android:src="@mipmap/ic_launcher"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/item_msg_margin"
+        android:layout_toRightOf="@id/item_msg_iv_icon"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_msg_tv_title"
+            style="@style/base_text_style"
+            android:singleLine="true"
+            android:text="@string/short_temp_text"
+            android:textColor="@color/textcolor_47"
+            android:textSize="@dimen/textsize_level4"/>
+
+        <TextView
+            android:id="@+id/item_msg_tv_content"
+            style="@style/base_text_style"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/long_temp_text"
+            android:textColor="@color/textcolor_7d"
+            android:textSize="@dimen/textsize_level2"/>
+    </LinearLayout>
+
+    <View
+        style="@style/line_style"
+        android:layout_marginLeft="@dimen/item_msg_icon_marginlr"
+        android:layout_marginRight="@dimen/item_msg_icon_marginlr"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

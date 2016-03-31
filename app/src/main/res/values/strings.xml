@@ -1,0 +1,134 @@
+<resources>
+
+    <string-array name="my_approves">
+        <item>实名认证</item>
+        <item>企业认证</item>
+    </string-array>
+    <string-array name="address_books">
+        <item>发货人地址</item>
+        <item>收货人地址</item>
+    </string-array>
+    <!--设置-->
+    <string-array name="settings">
+        <item>密码修改</item>
+        <item>去评分</item>
+        <item>意见反馈</item>
+        <item>版本更新</item>
+        <item>关于我们</item>
+    </string-array>
+    <string name="app_name">骄阳物流</string>
+    <string name="exit_app">再按一次,退出应用程序</string>
+    <!--下拉刷新和上拉加载数据-->
+    <string name="pullrefresh_header_pull_to_refresh">下拉刷新</string>
+    <string name="pullrefresh_header_refresh">正在更新...</string>
+    <string name="pullrefresh_footer_pull_to_refresh">上拉刷新</string>
+    <string name="pullrefresh_time">最近更新:</string>
+    <string name="pullrefresh_footer_refresh">正在加载...</string>
+    <string name="pullrefresh_release_to_refresh">松开更新</string>
+    <string name="pullrefresh_refresh_success">加载成功</string>
+    <string name="pullrefresh_refresh_faile">加载失败</string>
+    <string name="pullrefresh_refresh_more">查看更多</string>
+    <string name="pullrefresh_refresh_not_more">没有更多</string>
+
+    <!--Toast提示文字-->
+    <string name="toast_edit_pwd_success">恭喜你\n密码修改已经成功！</string>
+
+
+
+    <!--GuideActivity-->
+    <string name="guide_start">开始体验</string>
+    <string name="guide_select_driver">我是司机</string>
+    <string name="guide_select_user">我是用户</string>
+
+    <!--自定义DSearchView提示文字-->
+    <string name="dsearch_hint">请输入骄阳物流订单编号</string>
+    <!--自定义Dialog文字-->
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+    <!--自定义进度弹窗-->
+    <string name="hard_loading">卖力加载中</string>
+    <!--tab文字-->
+    <string name="tab_home">首页</string>
+    <string name="tab_msg">消息</string>
+    <string name="tab_my">我的</string>
+    <!--用户首页feature文字-->
+    <string name="feature_online_order">在线下单</string>
+    <string name="feature_time_price">时效价格</string>
+    <string name="feature_good_trick">货物跟踪</string>
+    <string name="feature_sign_order">签收订单</string>
+    <string name="feature_release_records">发货记录</string>
+    <string name="feature_customer_service">一键客服</string>
+    <string name="tip">提示</string>
+    <string name="title">标题</string>
+    <string name="home_confirm_call">你确定拨打客服电话吗！</string>
+    <string name="tip_no_call">没有权限拨打电话\n请你去安全中心手动授权！</string>
+    <!--登陆相关的-->
+    <string name="login">登陆</string>
+    <string name="phone_number">手机号</string>
+    <string name="password">密码</string>
+    <string name="verification_code">验证码</string>
+    <string name="get_verification_code">获取验证码</string>
+    <string name="forget_pwd">忘记密码</string>
+    <string name="regist_now">立即注册</string>
+    <string name="regist">注册</string>
+    <string name="create_account">创建账号</string>
+    <string name="input_bind_phone_number">请输入你绑定的手机号</string>
+    <string name="input_verification_code">请输入短信验证码</string>
+    <string name="input_new_pwd">请输入新密码</string>
+    <string name="confirm_new_pwd">确认新密码</string>
+    <string name="contact_customer_personal">请联系客服人员</string>
+    <string name="repwd_tip">如果你绑定的手机无法接收手机验证短信</string>
+    <string name="title_repwd">重置密码</string>
+    <string name="finish">完成</string>
+    <string name="reget_code">重获验证码</string>
+    <!--消息-->
+    <string name="news_information">新闻资讯</string>
+    <string name="more_loading">正在加载</string>
+    <string name="loaderror_click_reload">加载失败，点击重试</string>
+    <string name="long_temp_text">我是一只小蜜蜂啊，飞啊，飞啊，飞到花丛中啊，嘎嘎嘎！哈哈，花朵好漂亮啊，踩啊踩啊</string>
+    <string name="short_temp_text">小蜜蜂</string>
+    <!--我的-->
+    <string name="account_name">帐户名：</string>
+    <string name="mobile">电话：</string>
+    <string name="owner_approve">货主认证</string>
+    <string name="address_book">地址薄</string>
+    <string name="my_points">我的积分</string>
+    <string name="recomment_friend">推荐给好友</string>
+    <string name="msg_center">站内信</string>
+    <string name="user_center">用户中心</string>
+    <string name="my_approve">我的认证</string>
+    <string name="setting">设置</string>
+    <string name="check_status">审核状态:</string>
+    <string name="check_status_uncheck">未上传</string>
+    <string name="check_status_checking">审核中</string>
+    <string name="check_status_checked">审核通过</string>
+    <string name="realname">真实姓名</string>
+    <string name="hint_realname">张三丰</string>
+    <string name="idcard">身份证</string>
+    <string name="hint_idcard">4305**********881X</string>
+    <string name="idcard_num">身份证号</string>
+    <string name="take_photo">拍照</string>
+    <string name="please_select">请选择操作</string>
+    <string name="open_photo">打开相册</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="linkman">联系人</string>
+    <string name="_mobile">手机</string>
+    <string name="fix_mobile">固话</string>
+    <string name="host_area">所在地区</string>
+    <string name="detail_address">详细地址</string>
+    <string name="set_default_send_address">设为默认发货地址</string>
+    <string name="edit_address">修改地址</string>
+    <string name="page_address_tip">请完善好地址信息！</string>
+    <string name="recommend_method_one">方法一：记不住朋友的手机号？试试快速通道</string>
+    <string name="quick_channel">快速通道</string>
+    <string name="recommend_method_two">方法二：手动输入朋友手机号</string>
+    <string name="input_friend_mobile">输入朋友手机号</string>
+    <string name="invite_friend">邀请好友</string>
+    <string name="recommend_tip">提交手机号码后，系统会自动向货主飞速找车APP下载短信，货主可以自动直接点击连接或到应用市场下载</string>
+    <string name="friend_list">好友列表</string>
+    <string name="search">搜索</string>
+
+
+
+</resources>

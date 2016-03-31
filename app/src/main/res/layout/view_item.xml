@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_item_height"
+                android:background="@drawable/selector_bg">
+
+    <ImageView
+        android:id="@+id/item_view_icon"
+        android:layout_marginLeft="@dimen/view_margin"
+        android:layout_width="@dimen/view_icon_size"
+        android:layout_height="@dimen/view_icon_size"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/item_view_text"
+        style="@style/base_text_style"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/item_view_icon"
+        android:layout_marginLeft="@dimen/view_margin"
+        android:gravity="center"
+        android:textColor="@color/textcolor_4c"
+        android:textSize="@dimen/textsize_level3"/>
+
+    <ImageView
+        android:id="@+id/item_view_arrow"
+        android:layout_width="@dimen/view_more_size"
+        android:layout_height="@dimen/view_more_size"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/view_margin"
+        android:src="@mipmap/more"/>
+    <TextView
+        android:id="@+id/item_view_right_text"
+        style="@style/base_text_style"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/view_margin"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:textColor="@color/textcolor_4c"
+        android:textSize="@dimen/textsize_level3"/>
+    <View
+        android:id="@+id/item_view_line"
+        style="@style/line_style"
+        android:layout_marginLeft="@dimen/view_line_margin"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

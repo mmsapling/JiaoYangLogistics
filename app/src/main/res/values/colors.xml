@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--item条目背景颜色-->
+    <color name="item_bg_normal_white">#FFFFFFFF</color>
+    <color name="item_bg_press_F6">#F6F6F6</color>
+    <color name="item_bg_press_E5">#E5E5E5</color>
+    <!--全局-->
+    <color name="menu_bg">#1F3273</color>
+    <color name="bg">#F6F6F6</color>
+    <color name="line_bg">#EBEBEB</color>
+    <color name="tv_normal1">#9A9A9A</color>
+    <color name="textcolor_btn_pressed">#F61418</color>
+    <color name="textcolor_btn_normal">#666666</color>
+    <!--按钮背景颜色-->
+    <color name="btn_normal">#FFB83D</color>
+    <color name="btn_pressed">#E5E5E5</color>
+    <!--常用颜色-->
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#0000FF</color>
+    <color name="onange">#FF9900</color>
+    <color name="green">#009900</color>
+
+    <!--联系人列表-->
+    <color name="yellow_page_search_bg">#fffffbfa</color>
+    <color name="login_form_hint">#ffb5b5b5</color>
+    <color name="transparent">#00000000</color>
+    <color name="yellow_light">#ffefa717</color>
+    <!--自定义Toast颜色参数-->
+    <color name="toast_bg">#66000000</color>
+    <color name="toast_textcolor">#FFFFFF</color>
+    <!--自定义searchview-->
+    <color name="dsearch_bg">#FFFFFF</color>
+    <!--正常字体颜色-->
+    <color name="textcolor_normal">#FFFFFF</color>
+    <!--按压下去字体颜色-->
+    <color name="textcolor_pressed">#FF0000</color>
+    <!--tab颜色-->
+    <color name="tab_bg">#F7F7F7</color>
+    <color name="tab_stroke">#EEEEEE</color>
+    <color name="tab_color">#FFFFB83D</color>
+    <color name="tab_textcolor">#9F9F9F</color>
+    <!--Gridview背景颜色-->
+    <color name="gridview_bg">#EDEDED</color>
+    <!--自定义DDialog颜色-->
+    <color name="ddialog_text_color">#333333</color>
+    <color name="ddialog_line_bg">#E3E3E3</color>
+    <color name="ddialog_rightbtn_pressed">#EBEBEB</color>
+
+    <color name="dalertdialog_line">#C6C6C6</color>
+    <color name="dactionsheet_blue">#037BFF</color>
+    <color name="dactionsheet_red">#FD4A2E</color>
+    <color name="dactionsheet_gray">#8F8F8F</color>
+    <color name="textcolor_4c">#4C4C4C</color>
+    <color name="textcolor_47">#474747</color>
+    <color name="textcolor_7d">#7D7D7D</color>
+    <color name="textcolor_e6">#E6E6E6</color>
+    <color name="textcolor_9d">#9D9D9D</color>
+    <color name="indicator_color">#FFCA6D</color>
+    <color name="status_bg">#FFF7CC</color>
+    <color name="textcolor_status">#D29F28</color>
+    <color name="toggle_on">#4BED90</color>
+    <color name="color_eb">#EBEBEB</color>
+    <!--联系人条目背景-->
+    <color name="item_bg_sort">#F9F9F9</color>
+    <color name="item_friend">#454545</color>
+    <color name="item_friend_color">#323232</color>
+
+
+</resources>

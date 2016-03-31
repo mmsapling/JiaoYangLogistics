@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:toggle="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical">
+    <com.tylz.jiaoyanglogistics.view.TopMenu
+        android:id="@+id/_top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/shape_bg_stoke_normal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            style="@style/item_container_style">
+
+            <TextView
+                android:id="@+id/edit_title_linkman"
+                style="@style/item_title_style"
+                android:text="@string/linkman"
+                />
+
+            <EditText
+                android:id="@+id/_et_name"
+                style="@style/item_content_et_style"
+                android:layout_toRightOf="@+id/edit_title_linkman"
+                android:text="@string/app_name"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:src="@mipmap/contact"/>
+
+        </RelativeLayout>
+
+        <View
+            style="@style/line_style"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_20"/>
+        <!--手机-->
+        <RelativeLayout
+            style="@style/item_container_style">
+
+            <TextView
+                android:id="@+id/edit_title_mobile"
+                style="@style/item_title_style"
+                android:text="@string/_mobile"
+                />
+
+            <EditText
+                android:id="@+id/_et_mobile"
+                style="@style/item_content_et_style"
+                android:layout_toRightOf="@+id/edit_title_mobile"
+                android:text="@string/phone_number"/>
+
+        </RelativeLayout>
+
+        <View
+            style="@style/line_style"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_20"/>
+
+        <!--固话-->
+        <RelativeLayout
+            style="@style/item_container_style">
+
+            <TextView
+                android:id="@+id/edit_title_fixmobile"
+                style="@style/item_title_style"
+                android:text="@string/fix_mobile"
+                />
+
+            <EditText
+                android:id="@+id/_et_fixmobile"
+                style="@style/item_content_et_style"
+                android:layout_toRightOf="@+id/edit_title_fixmobile"
+                android:text="@string/phone_number"/>
+
+
+        </RelativeLayout>
+
+        <View
+            style="@style/line_style"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_20"/>
+        <!--所在地区-->
+        <RelativeLayout
+            android:id="@+id/_container_address"
+            style="@style/item_container_style">
+
+            <TextView
+                android:id="@+id/edit_title_area"
+                style="@style/item_title_style"
+                android:text="@string/host_area"
+                />
+
+            <TextView
+                android:id="@+id/_tv_area"
+                style="@style/item_content_tv_style"
+                android:layout_toRightOf="@+id/edit_title_area"
+                android:text="@string/phone_number"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:src="@mipmap/area"/>
+
+        </RelativeLayout>
+
+        <View
+            style="@style/line_style"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_20"/>
+
+        <!--详细地址-->
+        <RelativeLayout
+            style="@style/item_container_style"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/edit_title_address"
+                style="@style/item_title_style"
+                android:layout_height="@dimen/menu_height"
+                android:paddingTop="@dimen/margin_10"
+                android:text="@string/detail_address"
+                />
+
+            <EditText
+                android:id="@+id/_et_address"
+                style="@style/item_content_et_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_60"
+                android:layout_toRightOf="@+id/edit_title_address"
+                android:gravity="left"
+                android:lines="2"
+                android:paddingTop="@dimen/margin_10"
+                android:text="@string/long_temp_text"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/line_style"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_20"/>
+
+        <!--设为默认发货地址-->
+        <RelativeLayout
+            style="@style/item_container_style">
+
+            <TextView
+                android:id="@+id/edit_title_default"
+                style="@style/item_title_style"
+                android:layout_width="wrap_content"
+                android:text="@string/set_default_send_address"
+                />
+
+            <com.zcw.togglebutton.ToggleButton
+                android:id="@+id/_toggle_button"
+                android:layout_width="@dimen/toggle_width"
+                android:layout_height="@dimen/toggle_height"
+                android:layout_alignParentRight="true"
+                toggle:borderWidth="@dimen/stroke_width"
+                toggle:offBorderColor="@color/color_eb"
+                toggle:offColor="@color/textcolor_7d"
+                toggle:onColor="@color/toggle_on"
+                toggle:spotColor="@color/white">
+            </com.zcw.togglebutton.ToggleButton>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/_bt_confirm"
+        android:layout_marginTop="@dimen/margin_40"
+        style="@style/base_btn_style2"
+        android:text="@string/confirm"/>
+</LinearLayout>

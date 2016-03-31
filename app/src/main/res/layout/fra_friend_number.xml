@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.tylz.jiaoyanglogistics.view.CustomEditText
+        android:id="@+id/_et_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/my_margin"
+        android:background="@drawable/bg_search_input"
+        android:drawableLeft="@mipmap/ic_search"
+        android:drawablePadding="@dimen/padding"
+        android:drawableRight="@mipmap/error"
+        android:freezesText="true"
+        android:gravity="center_vertical"
+        android:hint="@string/search"
+        android:imeOptions="actionSearch"
+        android:paddingRight="@dimen/my_margin"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/login_form_hint"
+        android:textSize="@dimen/textsize_level2"/>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:id="@+id/_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@mipmap/bg_cut_line"
+            android:dividerHeight="@dimen/line_height"
+            android:fadingEdge="none"
+            android:listSelector="@color/transparent"
+            android:scrollbars="none">
+        </ListView>
+
+        <TextView
+            android:id="@+id/_tv_dialog"
+            android:layout_width="@dimen/width_80"
+            android:layout_height="@dimen/width_80"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_show_head_toast"
+            android:gravity="center"
+            android:text="@string/short_temp_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_level4"
+            android:visibility="invisible"
+            />
+
+        <com.tylz.jiaoyanglogistics.view.SideBar
+            android:id="@+id/_side_bar"
+            android:layout_width="@dimen/height_30"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center"/>
+    </FrameLayout>
+</LinearLayout>

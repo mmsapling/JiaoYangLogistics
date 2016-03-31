@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical">
+
+
+    <LinearLayout
+        android:padding="@dimen/line_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_outcontainer_marginlr"
+        android:layout_marginTop="@dimen/login_outcontainer_margintop"
+        android:layout_marginRight="@dimen/login_outcontainer_marginlr"
+        android:background="@drawable/shape_bg_round_stoke_normal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_login_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+            <ImageView
+                android:id="@+id/login_iv_mobile"
+                android:layout_width="@dimen/item_login_pic_width"
+                android:layout_height="@dimen/item_login_pic_height"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/login_margin_left"
+                android:scaleType="fitXY"
+                android:src="@mipmap/cell_phone"/>
+
+            <EditText
+                android:id="@+id/login_et_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/login_margin_left"
+                android:layout_toRightOf="@id/login_iv_mobile"
+                android:background="@null"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:hint="@string/phone_number"
+                android:textSize="@dimen/textsize_level2"/>
+
+            <View
+                style="@style/line_style"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+        <!--密码-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_login_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+            <ImageView
+                android:id="@+id/login_iv_pwd"
+                android:layout_width="@dimen/item_login_pic_width"
+                android:layout_height="@dimen/item_login_pic_height"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/login_margin_left"
+                android:scaleType="fitXY"
+                android:src="@mipmap/secret"/>
+
+            <EditText
+                android:id="@+id/login_et_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/login_margin_left"
+                android:layout_toRightOf="@id/login_iv_pwd"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:hint="@string/password"
+                android:textSize="@dimen/textsize_level2"/>
+
+            <View
+                android:id="@+id/login_line"
+                style="@style/line_style"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+        <!--验证码-->
+        <RelativeLayout
+            android:id="@+id/login_container_code"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_login_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+            <EditText
+                android:id="@+id/login_et_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/login_margin_left"
+                android:background="@null"
+                android:inputType="number"
+                android:hint="@string/verification_code"
+                android:textSize="@dimen/textsize_level2"/>
+
+            <Button
+                android:id="@+id/login_bt_code"
+                style="@style/base_btn_style"
+
+                android:inputType="number"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/login_margin_left"
+                android:text="@string/get_verification_code"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--登陆-->
+    <Button
+        android:id="@+id/login_bt_login"
+        style="@style/base_btn_style"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/menu_height"
+        android:layout_marginLeft="@dimen/login_outcontainer_marginlr"
+        android:layout_marginRight="@dimen/login_outcontainer_marginlr"
+        android:text="@string/login"/>
+    <!--最下方-->
+    <RelativeLayout
+        android:layout_margin="@dimen/login_outcontainer_marginlr"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/login_tv_forgetpwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/select_textcolor_gray_white"
+            android:padding="@dimen/btn_padding1"
+            android:text="@string/forget_pwd"/>
+        <TextView
+            android:id="@+id/login_tv_registnow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/select_textcolor_gray_white"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/btn_padding1"
+            android:text="@string/regist_now"/>
+    </RelativeLayout>
+</LinearLayout>

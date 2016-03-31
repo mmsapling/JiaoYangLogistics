@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical">
+
+
+    <LinearLayout
+        android:padding="@dimen/line_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_outcontainer_marginlr"
+        android:layout_marginTop="@dimen/login_outcontainer_margintop"
+        android:layout_marginRight="@dimen/login_outcontainer_marginlr"
+        android:background="@drawable/shape_bg_round_stoke_normal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_login_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+            <EditText
+                android:id="@+id/login_et_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/login_margin_left"
+                android:background="@null"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:hint="@string/input_bind_phone_number"
+                android:textSize="@dimen/textsize_level2"/>
+
+            <View
+                style="@style/line_style"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+
+        <!--验证码-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_login_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+            <EditText
+                android:id="@+id/login_et_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/login_margin_left"
+                android:background="@null"
+                android:maxLength="8"
+                android:inputType="number"
+                android:hint="@string/input_verification_code"
+                android:textSize="@dimen/textsize_level2"/>
+
+            <Button
+                android:id="@+id/login_bt_code"
+                style="@style/base_btn_style"
+                android:layout_height="@dimen/btn_height"
+                android:inputType="number"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/login_margin_left"
+                android:text="@string/get_verification_code"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <!--密码-->
+    <LinearLayout
+        android:padding="@dimen/line_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_outcontainer_marginlr"
+        android:layout_marginTop="@dimen/login_outcontainer_marginlr"
+        android:layout_marginRight="@dimen/login_outcontainer_marginlr"
+        android:background="@drawable/shape_bg_round_stoke_normal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_login_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+            <EditText
+                android:id="@+id/login_et_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/login_margin_left"
+                android:background="@null"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:hint="@string/input_new_pwd"
+                android:textSize="@dimen/textsize_level2"/>
+
+            <View
+                style="@style/line_style"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_login_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+            <EditText
+                android:id="@+id/login_et_cofirm_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/login_margin_left"
+                android:background="@null"
+                android:maxLength="8"
+                android:inputType="number"
+                android:hint="@string/confirm_new_pwd"
+                android:textSize="@dimen/textsize_level2"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+
+
+    <!--确认-->
+    <Button
+        android:id="@+id/login_bt_confirm"
+        style="@style/base_btn_style"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/menu_height"
+        android:layout_marginLeft="@dimen/login_outcontainer_marginlr"
+        android:layout_marginRight="@dimen/login_outcontainer_marginlr"
+        android:text="@string/confirm"/>
+    <!--最下方-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/btn_padding1"
+        android:gravity="bottom|center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/tv_normal1"
+            android:text="@string/repwd_tip"/>
+        <TextView
+            android:id="@+id/login_tv_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/selector_btn_blue_red"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/btn_padding1"
+            android:text="@string/contact_customer_personal"/>
+    </LinearLayout>
+</LinearLayout>

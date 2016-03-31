@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tylz="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mainuser_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_height"
+        android:background="@drawable/shape_tab_bg"
+        android:orientation="horizontal">
+        <com.tylz.jiaoyanglogistics.view.ChangeColorIconWithText
+            android:id="@+id/mainuser_tab_home"
+            style="@style/tab_style"
+            tylz:dcolor="@color/tab_color"
+            tylz:dicon="@mipmap/tab_home"
+            tylz:dtext="@string/tab_home"
+            tylz:dtextsize="@dimen/normal_textsize"/>
+        <com.tylz.jiaoyanglogistics.view.ChangeColorIconWithText
+            android:id="@+id/mainuser_tab_msg"
+            style="@style/tab_style"
+            tylz:dcolor="@color/tab_color"
+            tylz:dicon="@mipmap/tab_msg"
+            tylz:dtext="@string/tab_msg"
+            tylz:dtextsize="@dimen/normal_textsize"/>
+        <com.tylz.jiaoyanglogistics.view.ChangeColorIconWithText
+            android:id="@+id/mainuser_tab_my"
+            style="@style/tab_style"
+            tylz:dcolor="@color/tab_color"
+            tylz:dicon="@mipmap/tab_my"
+            tylz:dtext="@string/tab_my"
+            tylz:dtextsize="@dimen/normal_textsize"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:color="@color/tab_stroke" android:width="@dimen/tab_stroke_width"/>
+    <solid android:color="@color/tab_bg"/>
+</shape>

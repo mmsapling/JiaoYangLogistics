@@ -1,0 +1,116 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--全局参数-->
+    <dimen name="stroke_width">1dp</dimen>
+    <dimen name="line_width">1dp</dimen>
+    <dimen name="normal_textsize">14sp</dimen>
+    <dimen name="textsize_level2">16sp</dimen>
+    <dimen name="textsize_level3">18sp</dimen>
+    <dimen name="textsize_level4">20sp</dimen>
+    <dimen name="textsize_level5">22sp</dimen>
+    <dimen name="textsize_level6">30sp</dimen>
+    <dimen name="imagesize_level2">48dp</dimen>
+    <dimen name="line_height">1dp</dimen>
+    <dimen name="btn_padding1">8dp</dimen>
+    <dimen name="btn_padding2">10dp</dimen>
+    <dimen name="padding">5dp</dimen>
+    <dimen name="radius_normal">10dp</dimen>
+    <dimen name="radius_small">5dp</dimen>
+    <dimen name="btn_height">40dp</dimen>
+    <!--自定义Toast参数大小-->
+    <dimen name="toast_pic_width">48dp</dimen>
+    <dimen name="toast_pic_height">48dp</dimen>
+    <dimen name="toast_textsize">12sp</dimen>
+    <dimen name="toast_line_spacing">4dp</dimen>
+    <dimen name="toast_bg_radius">5dp</dimen>
+    <dimen name="toast_tip_margin_pic">10dp</dimen>
+    <dimen name="toast_container_padding">20dp</dimen>
+    <dimen name="point_pressed">10dp</dimen>
+    <!--引导页面参数，指示器大小-->
+    <dimen name="point_height">10dp</dimen>
+    <dimen name="point_width">10dp</dimen>
+    <dimen name="guide_container_marginbottom">25dp</dimen>
+    <dimen name="guide_bottom_btn_width">100dp</dimen>
+    <dimen name="guide_marginbottom_btn">60dp</dimen>
+    <dimen name="guide_bottom_btn_height">40dp</dimen>
+    <!--自定义searchview参数-->
+    <dimen name="dsearch_height">32dp</dimen>
+    <dimen name="dsearch_radius">3dp</dimen>
+    <dimen name="dsearch_marginleft">3dp</dimen>
+    <dimen name="dsearch_search_size">22dp</dimen>
+    <dimen name="dsearch_margin">6dp</dimen>
+    <dimen name="dsearch_error_size">22dp</dimen>
+    <dimen name="dsearch_width">280dp</dimen>
+    <!--菜单栏高度-->
+    <dimen name="menu_height">48dp</dimen>
+    <!--菜单栏的标题字体大小-->
+    <dimen name="menu_title_size">24sp</dimen>
+    <!--菜单栏最右侧字体大小-->
+    <dimen name="menu_text_size">20sp</dimen>
+    <dimen name="menu_margin">6dp</dimen>
+    <!--轮播图底部margin-->
+    <dimen name="loop_point_margin">10dp</dimen>
+    <!--tab高度-->
+    <dimen name="tab_height">60dp</dimen>
+    <dimen name="tab_stroke_width">1dp</dimen>
+    <dimen name="tab_padding">5dp</dimen>
+    <!--user_home_Fra-->
+    <dimen name="home_loop_pic">150dp</dimen>
+    <dimen name="home_feature_padding">10dp</dimen>
+    <dimen name="home_feature_margintop">8dp</dimen>
+    <!--自定义Ddialog-->
+    <dimen name="ddialog_line_margintop">15dp</dimen>
+    <dimen name="ddialog_line_height">1dp</dimen>
+    <dimen name="ddialog_radius">15dp</dimen>
+    <dimen name="ddialog_btn_padding">13dp</dimen>
+    <dimen name="ddialog_btn_title_padding">8dp</dimen>
+    <dimen name="ddialog_bg_radius">15dp</dimen>
+    <dimen name="ddialog_margin">15dp</dimen>
+    <dimen name="dalertdialog_margin">15dp</dimen>
+    <dimen name="dalertdialog_line_margintop">10dp</dimen>
+    <dimen name="dalertdialog_bt_height">43dp</dimen>
+    <!--登陆-->
+    <dimen name="login_margin_left">8dp</dimen>
+    <dimen name="item_login_height">60dp</dimen>
+    <dimen name="item_login_pic_size">32dp</dimen>
+    <dimen name="login_outcontainer_marginlr">20dp</dimen>
+    <dimen name="login_outcontainer_margintop">40dp</dimen>
+    <dimen name="item_login_pic_height">32dp</dimen>
+    <dimen name="item_login_pic_width">26dp</dimen>
+    <!--自定义ItemView-->
+    <dimen name="view_item_height">54dp</dimen>
+    <dimen name="view_icon_size">32dp</dimen>
+    <dimen name="view_more_size">32dp</dimen>
+    <dimen name="view_margin">12dp</dimen>
+    <dimen name="view_line_margin">28dp</dimen>
+    <dimen name="indicator_height">2dp</dimen>
+    <!--消息-->
+    <dimen name="item_msg_icon_width">80dp</dimen>
+    <dimen name="item_msg_icon_height">70dp</dimen>
+    <dimen name="item_msg_icon_marginlr">12dp</dimen>
+    <dimen name="item_msg_margin">5dp</dimen>
+    <!--我的-->
+    <dimen name="head_size">88dp</dimen>
+    <dimen name="my_head_margin">25dp</dimen>
+    <dimen name="my_margin">12dp</dimen>
+    <dimen name="status_height">90dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="icon_height">100dp</dimen>
+    <dimen name="menu_icon_height">120dp</dimen>
+    <dimen name="icon_width">100dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
+    <dimen name="width_80">80dp</dimen>
+    <dimen name="height_60">60dp</dimen>
+    <dimen name="toggle_height">30dp</dimen>
+    <dimen name="toggle_width">54dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="height_30">30dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+
+
+</resources>

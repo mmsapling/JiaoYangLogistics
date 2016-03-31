@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/my_margin"
+        android:layout_marginRight="@dimen/my_margin"
+        android:layout_marginTop="@dimen/my_head_margin"
+        android:text="@string/recommend_method_one"
+        android:textColor="@color/textcolor_47"
+        android:textSize="@dimen/textsize_level3"/>
+
+    <Button
+        android:id="@+id/_bt_linkman"
+        style="@style/base_btn_style2"
+        android:layout_marginTop="@dimen/my_head_margin"
+        android:text="@string/quick_channel"/>
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/my_margin"
+        android:layout_marginRight="@dimen/my_margin"
+        android:layout_marginTop="@dimen/my_head_margin"
+        android:text="@string/recommend_method_two"
+        android:textColor="@color/textcolor_47"
+        android:textSize="@dimen/textsize_level3"/>
+
+    <EditText
+        android:id="@+id/_et_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/my_head_margin"
+        android:background="@drawable/shape_bg_stoke_normal"
+        android:drawableLeft="@mipmap/phone"
+        android:drawablePadding="@dimen/my_margin"
+        android:hint="@string/input_friend_mobile"
+        android:inputType="phone"
+        android:singleLine="true"
+        android:padding="@dimen/btn_padding2"/>
+
+    <Button
+        android:id="@+id/_bt_invitation"
+        style="@style/base_btn_style2"
+        android:layout_marginTop="@dimen/my_head_margin"
+        android:text="@string/invite_friend"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/my_margin"
+        android:layout_marginRight="@dimen/my_margin"
+        android:layout_marginTop="@dimen/my_head_margin"
+        android:text="@string/recommend_tip"
+        android:textSize="@dimen/textsize_level2"/>
+</LinearLayout>

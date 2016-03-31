@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/my_margin"
+              android:background="@drawable/selector_bg_stoke"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/item_container_style">
+
+        <TextView
+            android:id="@+id/_item_tv_name"
+            style="@style/base_text_style2"
+            android:text="@string/short_temp_text"/>
+
+        <TextView
+            android:id="@+id/_item_tv_mobile"
+            style="@style/base_text_style2"
+            android:layout_alignParentRight="true"
+            android:text="@string/short_temp_text"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        style="@style/item_container_style">
+
+        <TextView
+            android:id="@+id/_item_tv_address"
+            style="@style/base_text_style2"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/long_temp_text"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/line_style"/>
+
+    <RelativeLayout
+        style="@style/item_container_style"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginBottom="@dimen/margin_5"
+        android:gravity="right|center_vertical">
+
+        <Button
+            android:id="@+id/_item_bt_edit"
+            style="@style/base_btn_style"
+            android:background="@drawable/selector_button_stroke_white_gray"
+            android:text="@string/edit"
+            android:textColor="@color/select_textcolor_black_gray"/>
+
+        <Button
+            android:id="@+id/_item_bt_delete"
+            style="@style/base_btn_style"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:layout_toRightOf="@id/_item_bt_edit"
+            android:background="@drawable/selector_button_stroke_white_gray"
+            android:text="@string/delete"
+            android:textColor="@color/select_textcolor_black_gray"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

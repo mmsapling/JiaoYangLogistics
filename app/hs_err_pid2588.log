@@ -1,0 +1,79 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 46496 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:323), pid=2588, tid=7880
+#
+# JRE version: Java(TM) SE Runtime Environment (7.0_80-b15) (build 1.7.0_80-b15)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (24.80-b11 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000000088dd000):  JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=7880, stack(0x000000000a250000,0x000000000a350000)]
+
+Stack: [0x000000000a250000,0x000000000a350000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+
+[error occurred during error reporting (printing native stack), id 0xc0000005]
+
+
+Current CompileTask:
+C2:    129    2             sun.misc.ASCIICaseInsensitiveComparator::compare (126 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00000000088de000 JavaThread "Service Thread" daemon [_thread_blocked, id=968, stack(0x000000000a7b0000,0x000000000a8b0000)]
+=>0x00000000088dd000 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=7880, stack(0x000000000a250000,0x000000000a350000)]
+  0x00000000088d9000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=3932, stack(0x0000000009fe0000,0x000000000a0e0000)]
+  0x00000000088d5000 JavaThread "Attach Listener" daemon [_thread_blocked, id=6852, stack(0x0000000009eb0000,0x0000000009fb0000)]
+  0x00000000088d0000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=6664, stack(0x0000000009c70000,0x0000000009d70000)]
+  0x000000000885f000 JavaThread "Finalizer" daemon [_thread_blocked, id=7712, stack(0x0000000009b70000,0x0000000009c70000)]
+  0x000000000885d800 JavaThread "Reference Handler" daemon [_thread_blocked, id=6356, stack(0x0000000009a00000,0x0000000009b00000)]
+  0x00000000025af000 JavaThread "main" [_thread_in_Java, id=6332, stack(0x0000000002790000,0x0000000002890000)]
+
+Other Threads:
+  0x000000000885a000 VMThread [stack: 0x00000000098e0000,0x00000000099e0000] [id=5876]
+  0x00000000088df800 WatcherThread [stack: 0x000000000a110000,0x000000000a210000] [id=7196]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 37376K, used 1290K [0x00000000eaa80000, 0x00000000ed400000, 0x0000000100000000)
+  eden space 32256K, 4% used [0x00000000eaa80000,0x00000000eabc2970,0x00000000eca00000)
+  from space 5120K, 0% used [0x00000000ecf00000,0x00000000ecf00000,0x00000000ed400000)
+  to   space 5120K, 0% used [0x00000000eca00000,0x00000000eca00000,0x00000000ecf00000)
+ ParOldGen       total 83968K, used 0K [0x00000000c0000000, 0x00000000c5200000, 0x00000000eaa80000)
+  object space 83968K, 0% used [0x00000000c0000000,0x00000000c0000000,0x00000000c5200000)
+ PSPermGen       total 21504K, used 2847K [0x00000000bae00000, 0x00000000bc300000, 0x00000000c0000000)
+  object space 21504K, 13% used [0x00000000bae00000,0x00000000bb0c7d50,0x00000000bc300000)
+
+Card table byte_map: [0x0000000005890000,0x0000000005ac0000] byte_map_base: 0x00000000052b9000
+
+Polling page: 0x0000000000230000
+
+Code Cache  [0x0000000002890000, 0x0000000002b00000, 0x0000000005890000)
+ total_blobs=189 nmethods=1 adapters=141 free_code_cache=48765Kb largest_free_block=49915392
+
+Compilation events (3 events):
+Event: 0.114 Thread 0x00000000088d9000    1             java.lang.String::charAt (29 bytes)
+Event: 0.118 Thread 0x00000000088d9000 nmethod 1 0x00000000028f0b10 code [0x00000000028f0c60, 0x00000000028f0d18]

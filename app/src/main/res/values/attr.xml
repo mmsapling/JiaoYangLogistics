@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Tab自定义属性-->
+    <attr name="dicon" format="reference"></attr>
+    <attr name="dcolor" format="color"></attr>
+    <attr name="dtext" format="string"></attr>
+    <attr name="dtextsize" format="dimension"></attr>
+    <!--可变色的tab-->
+    <declare-styleable name="ChangeColorIconWithText">
+        <attr name="dicon"></attr>
+        <attr name="dcolor"></attr>
+        <attr name="dtext"></attr>
+        <attr name="dtextsize"></attr>
+    </declare-styleable>
+    <!-- 自定义圆形图片-->
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@null"
+              android:gravity="center"
+              android:layout_height="match_parent">
+    <Button
+        android:id="@+id/guide_btn_driver"
+        android:layout_width="@dimen/guide_bottom_btn_width"
+        android:layout_height="@dimen/guide_bottom_btn_height"
+        android:background="@drawable/selector_button"
+        android:text="@string/guide_select_driver"
+        android:textColor="@color/selector_textcolor"/>
+    <Button
+        android:id="@+id/guide_btn_user"
+        android:layout_marginTop="@dimen/guide_marginbottom_btn"
+        android:layout_width="@dimen/guide_bottom_btn_width"
+        android:layout_height="@dimen/guide_bottom_btn_height"
+        android:background="@drawable/selector_button"
+        android:text="@string/guide_select_user"
+        android:textColor="@color/selector_textcolor"/>
+</LinearLayout>

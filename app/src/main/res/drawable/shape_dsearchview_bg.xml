@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <corners android:bottomLeftRadius="@dimen/dsearch_radius"
+        android:bottomRightRadius="@dimen/dsearch_radius"
+        android:topLeftRadius="@dimen/dsearch_radius"
+        android:topRightRadius="@dimen/dsearch_radius"/>
+    <solid android:color="@color/dsearch_bg"/>
+</shape>

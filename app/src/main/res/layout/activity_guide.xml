@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity">
+    <com.tylz.jiaoyanglogistics.view.ControlScrollViewPager
+        android:id="@+id/guide_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/guide_container_marginbottom">
+        <LinearLayout
+            android:id="@+id/guide_container_point"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shape_point_pressed"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/guide_btn"
+        android:layout_width="@dimen/guide_bottom_btn_width"
+        android:layout_height="@dimen/guide_bottom_btn_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/guide_marginbottom_btn"
+        android:background="@drawable/selector_button"
+        android:text="@string/guide_start"
+        android:textColor="@color/selector_textcolor"
+        android:visibility="gone"/>
+
+</RelativeLayout>

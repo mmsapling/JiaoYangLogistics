@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@color/status_bg"
+        android:layout_height="@dimen/menu_height">
+        <TextView
+            android:layout_marginLeft="@dimen/my_margin"
+           style="@style/status_style"/>
+        <TextView
+            android:id="@+id/_tv_status"
+            style="@style/status_style"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:padding="@dimen/line_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/my_head_margin"
+        android:background="@drawable/shape_bg_stoke_normal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_login_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+            <TextView
+                android:id="@+id/_tv_title_name"
+               style="@style/base_text_style"
+                android:textColor="@color/textcolor_4c"
+                android:layout_centerVertical="true"
+                android:text="@string/realname"
+                android:textSize="@dimen/textsize_level2"
+                android:layout_marginLeft="@dimen/login_margin_left"/>
+
+            <EditText
+                android:id="@+id/_et_real_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/my_head_margin"
+                android:layout_toRightOf="@id/_tv_title_name"
+                android:background="@null"
+                android:maxLength="6"
+                android:hint="@string/hint_realname"
+                android:textSize="@dimen/textsize_level2"/>
+
+            <View
+                style="@style/line_style"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+        <!--密码-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_login_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+            <TextView
+                android:id="@+id/_tv_title_id"
+                style="@style/base_text_style"
+                android:textColor="@color/textcolor_4c"
+                android:layout_centerVertical="true"
+                android:text="@string/idcard_num"
+                android:textSize="@dimen/textsize_level2"
+                android:layout_marginLeft="@dimen/login_margin_left"/>
+            <EditText
+                android:id="@+id/_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/my_head_margin"
+                android:layout_toRightOf="@id/_tv_title_id"
+                android:background="@null"
+                android:maxLength="6"
+                android:hint="@string/hint_idcard"
+                android:textSize="@dimen/textsize_level2"/>
+            <View
+                android:id="@+id/login_line"
+                style="@style/line_style"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+        <!--验证码-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/menu_icon_height"
+            android:background="@drawable/shape_bg_round_normal">
+
+
+            <TextView
+                android:id="@+id/_tv_title_icpic"
+                style="@style/base_text_style"
+                android:textColor="@color/textcolor_4c"
+                android:layout_centerVertical="true"
+                android:text="@string/idcard"
+                android:textSize="@dimen/textsize_level2"
+                android:layout_marginLeft="@dimen/login_margin_left"/>
+
+
+            <ImageView
+                android:id="@+id/_iv_idcard"
+                android:layout_height="match_parent"
+                android:layout_width="@dimen/icon_width"
+                android:scaleType="fitXY"
+                android:src="@mipmap/approve_default"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:layout_marginRight="@dimen/login_margin_left"/>
+        </RelativeLayout>
+    </LinearLayout>
+        <Button
+            android:id="@+id/_bt_status"
+            style="@style/base_btn_style2"
+            android:layout_marginTop="@dimen/my_head_margin"
+            android:text="@string/check_status"/>
+</LinearLayout>

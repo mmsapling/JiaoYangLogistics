@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical">
+
+    <com.tylz.jiaoyanglogistics.view.TopMenu
+        android:id="@+id/_topMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:paddingTop="@dimen/line_height"
+        android:paddingBottom="@dimen/line_height"
+        android:layout_marginTop="@dimen/view_line_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_stoke_normal"
+        android:orientation="vertical">
+
+        <com.tylz.jiaoyanglogistics.view.ItemView
+            android:id="@+id/_iv_edit_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.tylz.jiaoyanglogistics.view.ItemView
+            android:id="@+id/_iv_grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.tylz.jiaoyanglogistics.view.ItemView
+            android:id="@+id/_iv_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.tylz.jiaoyanglogistics.view.ItemView
+            android:id="@+id/_iv_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.tylz.jiaoyanglogistics.view.ItemView
+            android:id="@+id/_iv_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>
