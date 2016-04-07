@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.tylz.jiaoyanglogistics.view.TopMenu
+        android:id="@+id/_top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_120"
+        android:background="@color/menu_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/_tv_avaible_score"
+            style="@style/base_text_style"
+            android:text="@string/short_temp_text"
+            android:textSize="@dimen/textsize_level6"/>
+
+        <TextView
+            style="@style/base_text_style"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="@string/avaible_score"
+            android:textSize="@dimen/textsize_level3"/>
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.hellosliu.easyrecyclerview.EasyRecylerView
+            android:id="@+id/_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

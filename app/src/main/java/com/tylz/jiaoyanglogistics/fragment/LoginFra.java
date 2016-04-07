@@ -1,7 +1,9 @@
 package com.tylz.jiaoyanglogistics.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +14,25 @@ import android.widget.TextView;
 
 import com.tylz.jiaoyanglogistics.R;
 import com.tylz.jiaoyanglogistics.activity.LoginActivity;
+import com.tylz.jiaoyanglogistics.activity.MainUserActivity;
 import com.tylz.jiaoyanglogistics.base.BaseFragment;
+import com.tylz.jiaoyanglogistics.conf.Constants;
+import com.tylz.jiaoyanglogistics.conf.NetManager;
+import com.tylz.jiaoyanglogistics.model.User;
+import com.tylz.jiaoyanglogistics.util.CommonUitls;
+import com.tylz.jiaoyanglogistics.util.ToastUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.DCallback;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 /**
  * @author tylz
  * @time 2016/3/23 0023 15:51
- * @des
+ * @des 登陆
  *
  * @updateAuthor
  * @updateDate 2016/3/23 0023
@@ -31,25 +42,20 @@ public class LoginFra
         extends BaseFragment
 {
     @Bind(R.id.login_et_mobile)
-    EditText mEtMobile;
+    EditText       mEtMobile;
     @Bind(R.id.login_et_pwd)
-    EditText mEtPwd;
-    @Bind(R.id.login_et_code)
-    EditText mEtCode;
-    @Bind(R.id.login_bt_code)
-    Button   mBtCode;
+    EditText       mEtPwd;
     @Bind(R.id.login_bt_login)
-    Button   mBtLogin;
+    Button         mBtLogin;
     @Bind(R.id.login_tv_forgetpwd)
-    TextView mTvForgetpwd;
+    TextView       mTvForgetpwd;
     @Bind(R.id.login_tv_registnow)
-    TextView mTvRegistnow;
+    TextView       mTvRegistnow;
     @Bind(R.id.login_container_code)
     RelativeLayout mContainerCode;
     @Bind(R.id.login_line)
-    View mViewLine;
+    View           mViewLine;
     private LoginActivity mContext;
-
 
 
     @Override
@@ -81,15 +87,13 @@ public class LoginFra
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.login_bt_code,
-              R.id.login_bt_login,
+    @OnClick({R.id.login_bt_login,
               R.id.login_tv_forgetpwd,
               R.id.login_tv_registnow})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.login_bt_code:
-                break;
             case R.id.login_bt_login:
+                login();
                 break;
             case R.id.login_tv_forgetpwd:
                 mContext.switchRePwd();
@@ -98,6 +102,51 @@ public class LoginFra
                 mContext.switchRegist();
                 break;
         }
+    }
+
+    /**
+     * 登陆
+     */
+    private void login() {
+        String mobile = mEtMobile.getText()
+                                 .toString();
+        String pwd = mEtPwd.getText()
+                           .toString();
+
+        if (TextUtils.isEmpty(mobile) || TextUtils.isEmpty(pwd)) {
+            ToastUtils.makePicTextShortToast(mContext,
+                                             Constants.ICON_TIP,
+                                             R.string.tip_input_mobile_pwd);
+            return;
+        }
+        showProgress();
+        OkHttpUtils.post()
+                   .url(NetManager.User.LOGIN)
+                   .addParams(NetManager.MOBILE, mobile)
+                   .addParams(NetManager.PASSWORD, pwd)
+                   .addParams(NetManager.DEVICE_ID, CommonUitls.getDeviceId(mContext))
+                   .build()
+                   .execute(new DCallback<User>() {
+                       @Override
+                       public void onError(Call call, Exception e) {
+                           connectError();
+                       }
+
+                       @Override
+                       public void onResponse(User response) {
+                           if (isSuccess(response)) {
+                               mSpUtils.putBoolean(Constants.IS_LOGIN, true);
+                               mSpUtils.putUser(response);
+                               Intent intent = new Intent(mContext, MainUserActivity.class);
+                               startActivity(intent);
+                               mContext.finish();
+                           } else {
+                               ToastUtils.makePicTextShortToast(mContext,
+                                                                Constants.ICON_ERROR,
+                                                                response.message);
+                           }
+                       }
+                   });
     }
 
 

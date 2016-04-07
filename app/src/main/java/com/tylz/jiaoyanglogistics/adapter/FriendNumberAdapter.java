@@ -4,12 +4,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tylz.jiaoyanglogistics.R;
 import com.tylz.jiaoyanglogistics.base.MyBaseApdater;
 import com.tylz.jiaoyanglogistics.model.ContactsInfo;
+import com.tylz.jiaoyanglogistics.util.UIUtils;
 
 import java.util.List;
 
@@ -42,8 +42,8 @@ public class FriendNumberAdapter
             View view = mLayoutInflater.inflate(R.layout.item_friend_number, parent, false);
             holder = new ViewHolder();
             view.setTag(holder);
+            convertView = view;
             holder.ivHead = (ImageView) view.findViewById(R.id.item_frient_civ_head);
-            holder.containerContent = (LinearLayout) view.findViewById(R.id.item_frient_container_content);
             holder.tvMobile = (TextView) view.findViewById(R.id.item_frient_tv_mobile);
             holder.tvName = (TextView) view.findViewById(R.id.item_frient_tv_name);
             holder.tvSort = (TextView) view.findViewById(R.id.item_frient_tv_sort);
@@ -53,17 +53,17 @@ public class FriendNumberAdapter
         }
         ContactsInfo data = (ContactsInfo) getItem(position);
         //根据position获取分类的首字母的Char ascii值
-//            int section = getSectionForPosition(position);
-//            //如果当前位置等于该分类首字母的char位置，则认为是第一次出现
-//            if(position == getPositionForSection(section)){
-//                holder.tvSort.setVisibility(View.VISIBLE);
-//                String sort =  "☆".equals(data.sortLetter) ?data.sortLetter+ "(管理员)" : data.sortLetter;
-//                holder.tvSort.setText(sort);
-//                holder.tvLine.setVisibility(View.VISIBLE);
-//            }else{
-//                holder.tvSort.setVisibility(View.GONE);
-//                holder.tvLine.setVisibility(View.GONE);
-//            }
+            int section = getSectionForPosition(position);
+            //如果当前位置等于该分类首字母的char位置，则认为是第一次出现
+            if(position == getPositionForSection(section)){
+                holder.tvSort.setVisibility(View.VISIBLE);
+                String sort =  "☆".equals(data.sortLetter) ?data.sortLetter+ UIUtils.getString(R.string.other) : data.sortLetter;
+                holder.tvSort.setText(sort);
+                holder.tvLine.setVisibility(View.VISIBLE);
+            }else{
+                holder.tvSort.setVisibility(View.GONE);
+                holder.tvLine.setVisibility(View.GONE);
+            }
         holder.tvName.setText(data.name);
         holder.tvMobile.setText(data.mobile);
         holder.ivHead.setImageBitmap(data.photo);
@@ -103,7 +103,6 @@ public class FriendNumberAdapter
         TextView     tvSort;
         TextView     tvName;
         TextView     tvMobile;
-        LinearLayout containerContent;
         TextView     tvLine;
     }
 

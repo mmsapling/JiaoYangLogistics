@@ -12,6 +12,7 @@
     <color name="bg">#F6F6F6</color>
     <color name="line_bg">#EBEBEB</color>
     <color name="tv_normal1">#9A9A9A</color>
+    <color name="tv_normal2">#454545</color>
     <color name="textcolor_btn_pressed">#F61418</color>
     <color name="textcolor_btn_normal">#666666</color>
     <!--按钮背景颜色-->

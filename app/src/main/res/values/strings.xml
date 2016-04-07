@@ -81,6 +81,8 @@
     <string name="title_repwd">重置密码</string>
     <string name="finish">完成</string>
     <string name="reget_code">重获验证码</string>
+    <string name="tip_input_mobile_pwd">请输入手机号或密码!</string>
+    <string name="tip_input_code">请输入验证码！</string>
     <!--消息-->
     <string name="news_information">新闻资讯</string>
     <string name="more_loading">正在加载</string>
@@ -128,7 +130,34 @@
     <string name="recommend_tip">提交手机号码后，系统会自动向货主飞速找车APP下载短信，货主可以自动直接点击连接或到应用市场下载</string>
     <string name="friend_list">好友列表</string>
     <string name="search">搜索</string>
-
-
-
+    <string name="other">(其他)</string>
+    <string name="avaible_score">可用积分</string>
+    <string name="point_user_detail">积分使用明细</string>
+    <string name="user1">1.积分达到500分，免费送线下洗车券一张</string>
+    <string name="user2">2.积分达到1000分，免费送线下卡牌润滑油一桶</string>
+    <string name="user3">3.兑换积分时，将APP生成的兑换码告知骄阳客服，客服录入系统后，骄阳会尽快告知领取礼品</string>
+    <string name="user4">4.为感谢广大车主及货主对骄阳物流的支持，我们特设计了积分产品，你登陆、注册、打开等操作都会获得相应积分。</string>
+    <string name="share">分享</string>
+    <string name="send_order">发单</string>
+    <string name="move_order">运单</string>
+    <string name="point_add1">每天一次</string>
+    <string name="point_add2">首次</string>
+    <string name="point_add3">好友成功注册</string>
+    <string name="point_add4">成功申单</string>
+    <string name="point_add5">运单正式发运</string>
+    <string name="point_add11">+50</string>
+    <string name="point_add22">+50</string>
+    <string name="point_add33">+100</string>
+    <string name="point_add44">+100</string>
+    <string name="point_add55">+100</string>
+    <string name="point_detail">积分明细</string>
+    <string name="exchange_recorder">兑换记录</string>
+    <string name="exchange">兑换</string>
+    <!--登陆-->
+    <string name="success_regist">注册成功</string>
+    <string name="connect_net_error">网络连接失败！</string>
+    <string name="tip_input_mobile">请输入手机号码！</string>
+    <string name="tip_code_error">验证码错误！</string>
+    <string name="tip_input_pwd">请输入密码！</string>
+    <string name="tip_pwd_equals">两次输入密码不一致！</string>
 </resources>

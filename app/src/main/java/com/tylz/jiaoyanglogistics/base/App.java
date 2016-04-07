@@ -9,11 +9,13 @@ import android.os.Handler;
 
 import com.tylz.jiaoyanglogistics.conf.PicassoImageLoader;
 import com.tylz.jiaoyanglogistics.util.FileUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.concurrent.TimeUnit;
 
 import cn.finalteam.galleryfinal.CoreConfig;
 import cn.finalteam.galleryfinal.FunctionConfig;
@@ -57,8 +59,13 @@ public class App
         super.onCreate();
         init();
         initGallery();
+        initOkHttp();
 
 
+    }
+
+    private void initOkHttp() {
+        OkHttpUtils.getInstance().debug("OkHttpUtils").setConnectTimeout(100000, TimeUnit.MILLISECONDS);
     }
 
     private void init() {

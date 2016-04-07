@@ -35,7 +35,7 @@ public interface Constants {
     /**
      * 引导页面数据
      */
-    long    SPLASH_ANIMATION_DURATION = 3000;
+    long    SPLASH_ANIMATION_DURATION = 2000;
     long    SPLASH_SLEEP              = 2000;
     /**
      * 是否是第一次启动

@@ -89,7 +89,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/login_margin_left"
                 android:background="@null"
-                android:inputType="phone"
+                android:inputType="textPassword"
                 android:maxLength="11"
                 android:hint="@string/input_new_pwd"
                 android:textSize="@dimen/textsize_level2"/>
@@ -112,7 +112,7 @@
                 android:layout_marginLeft="@dimen/login_margin_left"
                 android:background="@null"
                 android:maxLength="8"
-                android:inputType="number"
+                android:inputType="textPassword"
                 android:hint="@string/confirm_new_pwd"
                 android:textSize="@dimen/textsize_level2"/>
         </RelativeLayout>

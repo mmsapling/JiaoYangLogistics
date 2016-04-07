@@ -3,10 +3,12 @@ package com.tylz.jiaoyanglogistics.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.tylz.jiaoyanglogistics.R;
@@ -31,15 +33,15 @@ import butterknife.ButterKnife;
  * @des 用户端主页面
  * @updateAuthor
  * @updateDate 2016/3/19 0019
- * @updateDes 主页面
+ * @updateDes  主页面  滑动页面 撤销
  */
 
 public class MainUserActivity
         extends FragmentActivity
-        implements ViewPager.OnPageChangeListener, View.OnClickListener
+        implements View.OnClickListener
 {
-    @Bind(R.id.mainuser_viewpager)
-    ViewPager               mViewpager;
+    @Bind(R.id.mainuser_container)
+    FrameLayout             mMainContainer;
     @Bind(R.id.mainuser_tab_home)
     ChangeColorIconWithText mTabHome;
     @Bind(R.id.mainuser_tab_msg)
@@ -75,7 +77,7 @@ public class MainUserActivity
     }
 
     private void initListener() {
-        mViewpager.addOnPageChangeListener(this);
+
         mTabHome.setOnClickListener(this);
         mTabMsg.setOnClickListener(this);
         mTabMy.setOnClickListener(this);
@@ -91,45 +93,19 @@ public class MainUserActivity
         mTabs.add(tabHomeFra);
         mTabs.add(tabMsgFra);
         mTabs.add(tabMyFra);
-        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-
-            @Override
-            public int getCount() {
-                return mTabs.size();
-            }
-
-            @Override
-            public Fragment getItem(int position) {
-                return mTabs.get(position);
-            }
-        };
-        mViewpager.setAdapter(mAdapter);
+        FragmentManager     fm          = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.add(R.id.mainuser_container,tabHomeFra);
+        transaction.add(R.id.mainuser_container,tabMsgFra);
+        transaction.add(R.id.mainuser_container,tabMyFra);
+        transaction.commit();
+        switchTab(tabHomeFra);
     }
 
     private void initView() {
         mTabHome.setIconAlpha(1.0f);
-        mViewpager.setOffscreenPageLimit(2);
     }
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if (positionOffset > 0) {
-            ChangeColorIconWithText left = mTabIndicators.get(position);
-            ChangeColorIconWithText right = mTabIndicators.get(position + 1);
-            left.setIconAlpha(1 - positionOffset);
-            right.setIconAlpha(positionOffset);
-        }
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
 
     @Override
     public void onClick(View v) {
@@ -142,17 +118,17 @@ public class MainUserActivity
             case R.id.mainuser_tab_home:
                 mTabIndicators.get(0)
                               .setIconAlpha(1.0f);
-                mViewpager.setCurrentItem(0, false);
+                switchTab(mTabs.get(0));
                 break;
             case R.id.mainuser_tab_msg:
                 mTabIndicators.get(1)
                               .setIconAlpha(1.0f);
-                mViewpager.setCurrentItem(1, false);
+                switchTab(mTabs.get(1));
                 break;
             case R.id.mainuser_tab_my:
                 mTabIndicators.get(2)
                               .setIconAlpha(1.0f);
-                mViewpager.setCurrentItem(2, false);
+                switchTab(mTabs.get(2));
                 break;
         }
     }
@@ -171,7 +147,9 @@ public class MainUserActivity
     public void onBackPressed() {
 
         if (System.currentTimeMillis() - mPreClickTime > 2000) {// 两次连续点击的时间间隔>2s
-            Toast.makeText(getApplicationContext(), UIUtils.getString(R.string.exit_app), Toast.LENGTH_SHORT)
+            Toast.makeText(getApplicationContext(),
+                           UIUtils.getString(R.string.exit_app),
+                           Toast.LENGTH_SHORT)
                  .show();
             mPreClickTime = System.currentTimeMillis();
             return;
@@ -182,13 +160,26 @@ public class MainUserActivity
         }
 
     }
+
     /**
      * 判断是否登陆
      * @return 登陆了返回true，反之返回false
      */
-    public boolean isLogin(){
+    public boolean isLogin() {
 
         boolean isLogin = mSPUtils.getBoolean(Constants.IS_LOGIN, false);
         return isLogin;
+    }
+
+    public void switchTab(Fragment fragment) {
+        FragmentManager     fm          = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        for (int i = 0; i < mTabs.size(); i++) {
+            if (mTabs.get(i) != fragment) {
+                transaction.hide(mTabs.get(i));
+            }
+        }
+        transaction.show(fragment);
+        transaction.commit();
     }
 }

@@ -16,4 +16,5 @@ public class ContactsInfo {
     public String name;
     public String mobile;
     public String sortLetter; //显示拼音的首字母
+    public String pingyin;
 }

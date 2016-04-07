@@ -63,6 +63,11 @@ public class TopMenu extends RelativeLayout {
         mTvRightText.setText(text);
         mTvRightText.setVisibility(View.VISIBLE);
     }
+    public void setRightText(int resId){
+        mIvRightIcon.setVisibility(View.GONE);
+        mTvRightText.setText(UIUtils.getString(resId));
+        mTvRightText.setVisibility(View.VISIBLE);
+    }
     public void setLeftIcon(int resId){
         mTvLeftText.setVisibility(View.GONE);
         mIvLeftIcon.setImageResource(resId);

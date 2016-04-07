@@ -7,11 +7,11 @@
     <com.tylz.jiaoyanglogistics.view.CustomEditText
         android:id="@+id/_et_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_40"
         android:layout_gravity="center_vertical"
         android:layout_margin="@dimen/my_margin"
         android:background="@drawable/bg_search_input"
-        android:drawableLeft="@mipmap/ic_search"
+        android:drawableLeft="@mipmap/search"
         android:drawablePadding="@dimen/padding"
         android:drawableRight="@mipmap/error"
         android:freezesText="true"
@@ -19,13 +19,14 @@
         android:hint="@string/search"
         android:imeOptions="actionSearch"
         android:paddingRight="@dimen/my_margin"
+        android:paddingLeft="@dimen/padding"
         android:singleLine="true"
         android:textColor="@color/black"
         android:textColorHint="@color/login_form_hint"
         android:textSize="@dimen/textsize_level2"/>
 
     <FrameLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ListView
@@ -56,7 +57,7 @@
         <com.tylz.jiaoyanglogistics.view.SideBar
             android:id="@+id/_side_bar"
             android:layout_width="@dimen/height_30"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="right|center"/>
     </FrameLayout>
 </LinearLayout>

@@ -1,13 +1,6 @@
 package com.tylz.jiaoyanglogistics.fragment;
 
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +10,6 @@ import android.widget.EditText;
 import com.tylz.jiaoyanglogistics.R;
 import com.tylz.jiaoyanglogistics.activity.MyActivity;
 import com.tylz.jiaoyanglogistics.base.BaseFragment;
-import com.tylz.jiaoyanglogistics.model.ContactsInfo;
-import com.tylz.jiaoyanglogistics.util.CharacterParser;
-
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

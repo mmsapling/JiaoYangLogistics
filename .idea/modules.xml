@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DatePicker/DatePicker.iml" filepath="$PROJECT_DIR$/DatePicker/DatePicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/EasyRecyclerView/EasyRecyclerView.iml" filepath="$PROJECT_DIR$/EasyRecyclerView/EasyRecyclerView.iml" />
       <module fileurl="file://$PROJECT_DIR$/JiaoYangLogistics.iml" filepath="$PROJECT_DIR$/JiaoYangLogistics.iml" />
       <module fileurl="file://$PROJECT_DIR$/Library_PagerSlidingTabStrip/Library_PagerSlidingTabStrip.iml" filepath="$PROJECT_DIR$/Library_PagerSlidingTabStrip/Library_PagerSlidingTabStrip.iml" />
       <module fileurl="file://$PROJECT_DIR$/ToggleButtonLib/ToggleButtonLib.iml" filepath="$PROJECT_DIR$/ToggleButtonLib/ToggleButtonLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/ToggleButtonSample/ToggleButtonSample.iml" filepath="$PROJECT_DIR$/ToggleButtonSample/ToggleButtonSample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ToggleButtonSample/ToggleButtonSample.iml" filepath="$PROJECT_DIR$/ToggleButtonSample/ToggleButtonSample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ToggleButtonSample/ToggleButtonSample.iml" filepath="$PROJECT_DIR$/ToggleButtonSample/ToggleButtonSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netcore/netcore.iml" filepath="$PROJECT_DIR$/netcore/netcore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/okhttputils/okhttputils.iml" filepath="$PROJECT_DIR$/okhttputils/okhttputils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-okhttp/sample-okhttp.iml" filepath="$PROJECT_DIR$/sample-okhttp/sample-okhttp.iml" />
     </modules>
   </component>
 </project>

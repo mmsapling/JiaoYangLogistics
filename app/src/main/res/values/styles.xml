@@ -132,6 +132,10 @@
        <item name="android:textColor">@color/textcolor_47</item>
         <item name="android:textSize">@dimen/textsize_level3</item>
     </style>
+    <style name="base_text_style3" parent="@style/base_text_style">
+        <item name="android:textColor">@color/item_friend</item>
+        <item name="android:textSize">@dimen/textsize_level3</item>
+    </style>
     <!--我的页面子条目样式-->
     <style name="my_item_style">
         <item name="android:layout_width">match_parent</item>
@@ -167,6 +171,24 @@
         <item name="android:layout_marginLeft">@dimen/margin_20</item>
         <item name="android:background">@null</item>
     </style>
+    <!--积分页面样式-->
+    <style name="point_style" parent="@style/base_text_style">
+        <item name="android:layout_marginLeft">@dimen/margin_10</item>
+        <item name="android:textColor">@color/tv_normal1</item>
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:layout_marginRight">@dimen/margin_10</item>
+    </style>
+    <style name="point_style1" parent="@style/base_text_style2">
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="point_style3" parent="@style/point_style">
+        <item name="android:padding">@dimen/btn_padding1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:lines">2</item>
+        <item name="android:gravity">center</item>
 
-
+    </style>
 </resources>

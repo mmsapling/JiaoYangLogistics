@@ -111,7 +111,8 @@ public class MyActivity
 
         FragmentManager     fm          = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        RecommendFriendFra fra = (RecommendFriendFra) fm.findFragmentByTag(TAG_RECOMMEND_FRIEND);
+        RecommendFriendFra  fra         = (RecommendFriendFra) fm.findFragmentByTag(
+                TAG_RECOMMEND_FRIEND);
         if (fra == null) {
             fra = new RecommendFriendFra();
         }
@@ -197,18 +198,13 @@ public class MyActivity
      * 切换到联系人
      */
     public void switchFriendNumber() {
-        final FragmentManager     fm          = getSupportFragmentManager();
+        final FragmentManager fm = getSupportFragmentManager();
         mTopMenu.setTitle(R.string.friend_list);
         mTopMenu.setLeftIcon(R.drawable.selector_menu_back);
         mTopMenu.setLeftIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int count = fm.getBackStackEntryCount();
-                if(count > 0){
-                    fm.popBackStack();
-                }else{
-                    finish();
-                }
+               back();
             }
         });
 
@@ -226,5 +222,26 @@ public class MyActivity
         return mTopMenu;
     }
 
+    @Override
+    public void onBackPressed() {
+        back();
+    }
 
+    private void back() {
+        FragmentManager fm = getSupportFragmentManager();
+
+        int count = fm.getBackStackEntryCount();
+        if (count > 0) {
+            FragmentManager.BackStackEntry entryat = fm.getBackStackEntryAt(count - 1);
+            if (entryat.getName()
+                       .equals(TAG_FRIEND_NUMBER))
+            {
+                mTopMenu.setTitle(R.string.recomment_friend);
+            }
+            fm.popBackStack();
+
+        } else {
+            finish();
+        }
+    }
 }

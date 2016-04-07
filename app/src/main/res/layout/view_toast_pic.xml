@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/toast_tip_margin_pic"
         android:gravity="center"
+        android:maxWidth="@dimen/width_200"
         android:lineSpacingExtra="@dimen/toast_line_spacing"
         android:textColor="@color/toast_textcolor"
         android:textSize="@dimen/textsize_level2" />

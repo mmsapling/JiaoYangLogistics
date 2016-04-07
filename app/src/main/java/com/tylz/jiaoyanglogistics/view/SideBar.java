@@ -13,42 +13,14 @@ import android.widget.TextView;
 import com.tylz.jiaoyanglogistics.R;
 
 
-public class SideBar
-        extends View
-{
+public class SideBar extends View {
     // 触摸事件
     private OnTouchingLetterChangedListener onTouchingLetterChangedListener;
     // 26个字母
-    public static String[] b      = {"☆",
-                                     "#",
-                                     "A",
-                                     "B",
-                                     "C",
-                                     "D",
-                                     "E",
-                                     "F",
-                                     "G",
-                                     "H",
-                                     "I",
-                                     "J",
-                                     "K",
-                                     "L",
-                                     "M",
-                                     "N",
-                                     "O",
-                                     "P",
-                                     "Q",
-                                     "R",
-                                     "S",
-                                     "T",
-                                     "U",
-                                     "V",
-                                     "W",
-                                     "X",
-                                     "Y",
-                                     "Z"};
-    private       int      choose = -1;// 选中
-    private       Paint    paint  = new Paint();
+    public static String[] b = { "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
+                                 "X", "Y", "Z" };
+    private int choose = -1;// 选中
+    private Paint paint = new Paint();
 
     private TextView mTextDialog;
 
@@ -74,8 +46,8 @@ public class SideBar
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         // 获取焦点改变背景颜色.
-        int height       = getHeight();// 获取对应高度
-        int width        = getWidth(); // 获取对应宽度
+        int height = getHeight();// 获取对应高度
+        int width = getWidth(); // 获取对应宽度
         int singleHeight = height / b.length;// 获取每一个字母的高度
 
         for (int i = 0; i < b.length; i++) {
@@ -83,11 +55,12 @@ public class SideBar
                 paint.setColor(Color.parseColor("#838383"));
             }
             paint.setAntiAlias(true);
-            paint.setTextSize(20);
+            paint.setTextSize(28);
             // 选中的状态
             if (i == choose) {
                 paint.setColor(getResources().getColor(R.color.yellow_light));
                 paint.setFakeBoldText(true);
+                paint.setTextSize(36);
             }
             // x坐标等于中间-字符串宽度的一半.
             float xPos = width / 2 - paint.measureText(b[i]) / 2;
@@ -101,11 +74,11 @@ public class SideBar
     @SuppressWarnings("deprecation")
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        final int                             action    = event.getAction();
-        final float                           y         = event.getY();// 点击y坐标
-        final int                             oldChoose = choose;
-        final OnTouchingLetterChangedListener listener  = onTouchingLetterChangedListener;
-        final int                             c         = (int) (y / getHeight() * b.length);// 点击y坐标所占总高度的比例*b数组的长度就等于点击b中的个数.
+        final int action = event.getAction();
+        final float y = event.getY();// 点击y坐标
+        final int oldChoose = choose;
+        final OnTouchingLetterChangedListener listener = onTouchingLetterChangedListener;
+        final int c = (int) (y / getHeight() * b.length);// 点击y坐标所占总高度的比例*b数组的长度就等于点击b中的个数.
 
         switch (action) {
             case MotionEvent.ACTION_UP:

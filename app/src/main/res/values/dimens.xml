@@ -27,6 +27,7 @@
     <dimen name="toast_bg_radius">5dp</dimen>
     <dimen name="toast_tip_margin_pic">10dp</dimen>
     <dimen name="toast_container_padding">20dp</dimen>
+    <dimen name="width_200">180dp</dimen>
     <dimen name="point_pressed">10dp</dimen>
     <!--引导页面参数，指示器大小-->
     <dimen name="point_height">10dp</dimen>
@@ -111,6 +112,10 @@
     <dimen name="margin_40">40dp</dimen>
     <dimen name="height_30">30dp</dimen>
     <dimen name="margin_8">8dp</dimen>
+    <dimen name="height_40">40dp</dimen>
 
+    <!--item条目-->
+    <dimen name="item_height">70dp</dimen>
+    <dimen name="height_120">120dp</dimen>
 
 </resources>

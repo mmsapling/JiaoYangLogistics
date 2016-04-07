@@ -10,10 +10,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/item_bg_sort"
-        android:paddingBottom="@dimen/padding"
-        android:paddingLeft="@dimen/padding"
-        android:paddingTop="@dimen/padding"
-        android:textColor="@color/item_friend" />
+        android:padding="@dimen/btn_padding2"
+        android:textSize="@dimen/textsize_level4"
+        android:textColor="@color/blue" />
 
     <TextView
         android:id="@+id/item_frient_tv_line"
@@ -25,7 +24,7 @@
         android:id="@+id/item_frient_container_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@drawable/selector_bg"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/padding"
         android:paddingLeft="@dimen/btn_padding2"

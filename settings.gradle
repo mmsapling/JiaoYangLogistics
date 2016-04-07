@@ -1,1 +1,1 @@
-include ':app', ':library', ':Library_PagerSlidingTabStrip', ':EasyRecyclerView', ':ToggleButtonLib', ':ToggleButtonSample'
+include ':app', ':library', ':Library_PagerSlidingTabStrip', ':EasyRecyclerView', ':ToggleButtonLib', ':ToggleButtonSample', ':netcore', ':sample-okhttp', ':okhttputils', ':DatePicker'

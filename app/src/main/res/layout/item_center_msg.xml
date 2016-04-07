@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@drawable/selector_bg">
+    <TextView
+        android:id="@+id/item_tv_score"
+        style="@style/base_text_style2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/item_msg_icon_marginlr"
+        android:layout_marginTop="@dimen/margin_10"
+        android:textColor="@color/red"
+        android:textSize="@dimen/textsize_level2"
+        />
+    <TextView
+        android:id="@+id/item_tv_content"
+        style="@style/base_text_style2"
+        android:layout_toLeftOf="@id/item_tv_score"
+        android:layout_marginLeft="@dimen/item_msg_icon_marginlr"
+        android:layout_marginTop="@dimen/margin_10"
+        android:lines="2"
+        android:ellipsize="end"
+        android:textSize="@dimen/textsize_level3"
+        />
+
+    <TextView
+        android:id="@+id/item_tv_time"
+        style="@style/base_text_style2"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/item_tv_content"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:layout_marginLeft="@dimen/item_msg_icon_marginlr"
+        android:textSize="@dimen/textsize_level2"
+        />
+
+    <ImageView
+        style="@style/line_style"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>
