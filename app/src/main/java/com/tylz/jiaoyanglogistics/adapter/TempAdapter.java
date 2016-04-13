@@ -35,6 +35,7 @@ public class TempAdapter extends MyBaseApdater<String> {
         if(convertView == null){
             holder = new ViewHolder();
             View view = View.inflate(mContext, R.layout.item_temp, null);
+            view.setSelected(true);
             view.setTag(holder);
             holder.mTvTemp = (TextView) view.findViewById(R.id.item_tv_temp);
         }else{

@@ -1,14 +1,14 @@
 package com.tylz.jiaoyanglogistics.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.view.View;
+import android.net.Uri;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
 import com.tylz.jiaoyanglogistics.base.BasePageAdapter;
-import com.tylz.jiaoyanglogistics.conf.Constants;
-import com.tylz.jiaoyanglogistics.util.ToastUtils;
+import com.tylz.jiaoyanglogistics.conf.NetManager;
+import com.tylz.jiaoyanglogistics.model.LoopPic;
 
 import java.util.List;
 
@@ -22,10 +22,10 @@ import java.util.List;
  * @updateDes
  */
 public class LoopPicPagerAdapter
-        extends BasePageAdapter<ImageView>
+        extends BasePageAdapter<LoopPic.LoopPicInfo>
 {
 
-    public LoopPicPagerAdapter(Context context, List<ImageView> dataSource) {
+    public LoopPicPagerAdapter(Context context, List<LoopPic.LoopPicInfo> dataSource) {
         super(context, dataSource);
     }
 
@@ -40,15 +40,14 @@ public class LoopPicPagerAdapter
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         position = position % mDataSource.size();
-        final int location = position;
-        ImageView view = mDataSource.get(position);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.makePicTextLongToast((Activity) mContext, Constants.ICON_SUCCESS,"你点击的是第" + location + "张图！");
-            }
-        });
+        LoopPic.LoopPicInfo info = mDataSource.get(position);
+        Uri uri = Uri.parse(NetManager.BASE + info.picture);
+
+        ImageView view = new ImageView(mContext);
+        view.setScaleType(ImageView.ScaleType.FIT_XY);
+        Picasso.with(mContext).load(uri).into(view);
         container.addView(view);
         return view;
     }
+
 }

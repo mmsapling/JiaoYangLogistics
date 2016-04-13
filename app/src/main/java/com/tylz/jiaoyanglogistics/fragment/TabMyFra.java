@@ -3,16 +3,19 @@ package com.tylz.jiaoyanglogistics.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.tylz.jiaoyanglogistics.R;
 import com.tylz.jiaoyanglogistics.activity.MyActivity;
 import com.tylz.jiaoyanglogistics.activity.SettingActivity;
 import com.tylz.jiaoyanglogistics.base.BaseFragment;
 import com.tylz.jiaoyanglogistics.conf.Constants;
+import com.tylz.jiaoyanglogistics.conf.NetManager;
 import com.tylz.jiaoyanglogistics.view.CircleImageView;
 import com.tylz.jiaoyanglogistics.view.ItemView;
 import com.tylz.jiaoyanglogistics.view.TopMenu;
@@ -34,8 +37,6 @@ public class TabMyFra
 {
     @Bind(R.id.tv_name)
     TextView mTvName;
-    @Bind(R.id.tv_account_name)
-    TextView mTvAccountName;
     @Bind(R.id.tv_mobile)
     TextView mTvMobile;
 
@@ -90,6 +91,33 @@ public class TabMyFra
         mCenterMsg.setIcon(R.mipmap.letter);
         mCenterMsg.setText(R.string.msg_center);
         mCenterMsg.isShowLine(false);
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        setUserInfo();
+
+    }
+
+    /*
+    *  设置用户信息
+    *  说明，user信息在fragment界面启动的时候才会有
+    */
+    private void setUserInfo() {
+        /**
+         * 头像信息
+         */
+        if (!TextUtils.isEmpty(mUser.avatar)) {
+            Picasso.with(mContext)
+                   .load(NetManager.BASE + mUser.avatar)
+                   .into(mCivHeadIcon);
+        }
+        mTvName.setText(mUser.username);
+        mTvMobile.setText(mUser.mobile);
     }
 
     @Override
@@ -108,6 +136,7 @@ public class TabMyFra
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.civ_head_icon:
+                startMyActivity(MyActivity.TAG_HEAD_ICON);
                 break;
             case R.id.my_owner_approve:
                 startMyActivity(MyActivity.TAG_OWNER_APPROVE);

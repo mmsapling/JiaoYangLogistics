@@ -35,22 +35,9 @@
                 android:id="@+id/tv_name"
                 style="@style/base_text_style"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/short_temp_text"
                 android:textSize="@dimen/textsize_level3"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    style="@style/base_text_style"
-                    android:text="@string/account_name"/>
-
-                <TextView
-                    android:id="@+id/tv_account_name"
-                    style="@style/base_text_style"/>
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,8 +60,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_bg_stoke_normal"
-        android:paddingBottom="@dimen/line_height"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/line_height">
+
         <com.tylz.jiaoyanglogistics.view.ItemView
             android:id="@+id/my_owner_approve"
             style="@style/my_item_style"

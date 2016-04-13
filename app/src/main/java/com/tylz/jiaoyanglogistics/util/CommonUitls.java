@@ -2,6 +2,8 @@ package com.tylz.jiaoyanglogistics.util;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,15 +11,23 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.telephony.TelephonyManager;
 
+import com.google.gson.Gson;
 import com.tylz.jiaoyanglogistics.R;
+import com.tylz.jiaoyanglogistics.conf.Constants;
+import com.tylz.jiaoyanglogistics.model.AddressInfo;
+import com.tylz.jiaoyanglogistics.model.AreaInfo;
+import com.tylz.jiaoyanglogistics.model.CityInfo;
 import com.tylz.jiaoyanglogistics.model.ContactsInfo;
+import com.tylz.jiaoyanglogistics.model.StreetInfo;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
@@ -139,10 +149,11 @@ public class CommonUitls {
                                                                     R.mipmap.bg_head);
                     }
                     String pingYin = PinyinUtils.getPingYin(name);
-                    String first_pingyin = pingYin.substring(0, 1).toUpperCase();
-                    if(first_pingyin.matches("[A-Z]")){
+                    String first_pingyin = pingYin.substring(0, 1)
+                                                  .toUpperCase();
+                    if (first_pingyin.matches("[A-Z]")) {
                         info.sortLetter = first_pingyin;
-                    }else{
+                    } else {
                         info.sortLetter = "☆";
                     }
                     info.pingyin = pingYin;
@@ -168,8 +179,8 @@ public class CommonUitls {
      */
     public static String getDeviceId(Context context)
     {
-        TelephonyManager tm = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
-        String DEVICE_ID = tm.getDeviceId();
+        TelephonyManager tm        = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String           DEVICE_ID = tm.getDeviceId();
         return DEVICE_ID;
     }
 
@@ -182,9 +193,9 @@ public class CommonUitls {
     @SuppressWarnings("unchecked")
     public static <T> Class<T> getGenericType(Object obj) {
         Class<T> klass = null;
-        Class    c     = obj instanceof Class
-                         ? (Class) obj
-                         : obj.getClass();
+        Class c = obj instanceof Class
+                  ? (Class) obj
+                  : obj.getClass();
         while (c != null) {
             Type t = c.getGenericSuperclass();
             if (t != null && t instanceof ParameterizedType) {
@@ -202,4 +213,215 @@ public class CommonUitls {
         return klass;
     }
 
+    /**
+     * 格式化时间串
+     * @param date  传入 xxxx-x-x 或者xxxx-0x-0x
+     * @return 返回xxxx年xx月xx日
+     */
+    public static String formatDataString(String date) {
+        String[]      dates = date.split("-");
+        StringBuilder sb    = new StringBuilder();
+        sb.append(dates[0] + "年");
+        if (dates[1].length() == 2) {
+            sb.append(dates[1] + "月");
+        } else {
+            sb.append("0" + dates[1] + "月");
+        }
+        if (dates[2].length() == 2) {
+            sb.append(dates[2] + "日");
+        } else {
+            sb.append("0" + dates[2] + "日");
+        }
+        return sb.toString();
+    }
+
+    //版本名
+    public static String getVersionName(Context context) {
+        return getPackageInfo(context).versionName;
+    }
+
+    //版本号
+    public static int getVersionCode(Context context) {
+
+        return getPackageInfo(context).versionCode;
+    }
+
+    private static PackageInfo getPackageInfo(Context context) {
+        PackageInfo pi = null;
+
+        try {
+            PackageManager pm = context.getPackageManager();
+            pi = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_CONFIGURATIONS);
+
+            return pi;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return pi;
+    }
+
+    public static String convertStreamToString(InputStream is) {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder  sb     = new StringBuilder();
+
+        String line = null;
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return sb.toString();
+    }
+
+    public static AddressInfo parseJson(Context context) {
+        AddressInfo addressInfo = new AddressInfo();
+        try {
+            InputStream is = context.getAssets()
+                                    .open(Constants.JSON_ADDRESS_DATA_NAME);
+            String json = CommonUitls.convertStreamToString(is);
+            Gson gson = new Gson();
+            addressInfo = gson.fromJson(json, AddressInfo.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return addressInfo;
+    }
+
+    /**
+     * 根据城市名 获取这个城市下面的所有区域
+     */
+    public static List<AreaInfo> getAreaDataByCityName(AddressInfo datas, CityInfo city) {
+        List<AreaInfo> areaDatas = new ArrayList<AreaInfo>();
+        for (int i = 0; i < datas.address.size(); i++) {
+            CityInfo cityInfo = datas.address.get(i);
+            if (!cityInfo.name.equals(city.name)) {
+                continue;
+            }
+            for (int j = 0; j < cityInfo.child.size(); j++) {
+                AreaInfo areaInfo = cityInfo.child.get(j);
+                areaDatas.add(areaInfo);
+            }
+        }
+
+
+        return areaDatas;
+    }
+
+    /**
+     * 根据城市名 ,区域名获取这个城市下面的所有区域
+     */
+    public static List<StreetInfo> getStreetDataByAreaName(AddressInfo datas,
+                                                           CityInfo city,
+                                                           AreaInfo area)
+    {
+        List<StreetInfo> streetDatas = new ArrayList<StreetInfo>();
+
+        for (int i = 0; i < datas.address.size(); i++) {
+            CityInfo cityInfo = datas.address.get(i);
+            if (!cityInfo.name.equals(city.name)) {
+                continue;
+            }
+            for (int j = 0; j < cityInfo.child.size(); j++) {
+                AreaInfo areaInfo = cityInfo.child.get(j);
+                if (!areaInfo.name.equals(area.name)) {
+                    continue;
+                }
+                for (int k = 0; k < areaInfo.child.size(); k++) {
+                    StreetInfo streetInfo = areaInfo.child.get(k);
+                    streetDatas.add(streetInfo);
+                }
+            }
+        }
+        return streetDatas;
+    }
+
+    /**
+     * 根据id找城市信息
+     * @param datas 地址数据
+     * @param id 市的id
+     * @return  返回城市信息
+     */
+    public static CityInfo getCityInfoById(AddressInfo datas,String id)
+    {
+        CityInfo data = null;
+        for (int i = 0; i < datas.address.size(); i++) {
+            CityInfo cityInfo = datas.address.get(i);
+            if (!cityInfo.id.equals(id)) {
+                continue;
+            }
+            data  = cityInfo;
+        }
+        return data;
+    }
+    /**
+     * 根据id找地区信息
+     * @param datas 地址数据
+     * @param id 地区的id
+     * @return  返回地区信息
+     */
+    public static AreaInfo getAreaInfoById(AddressInfo datas,String id)
+    {
+        AreaInfo data = null;
+        for (int i = 0; i < datas.address.size(); i++) {
+            CityInfo cityInfo = datas.address.get(i);
+
+            for(int j = 0; j < cityInfo.child.size(); j++){
+                AreaInfo areaInfo = cityInfo.child.get(j);
+                if (!areaInfo.id.equals(id)) {
+                    continue;
+                }
+                data = areaInfo;
+            }
+        }
+        return data;
+    }
+    /**
+     * 根据id找地区信息
+     * @param datas 地址数据
+     * @param id 地区的id
+     * @return  返回地区信息
+     */
+    public static StreetInfo getStreetInfoById(AddressInfo datas,String id)
+    {
+        StreetInfo data = null;
+        for (int i = 0; i < datas.address.size(); i++) {
+            CityInfo cityInfo = datas.address.get(i);
+
+            for(int j = 0; j < cityInfo.child.size(); j++){
+                AreaInfo areaInfo = cityInfo.child.get(j);
+                for(int k = 0; k < areaInfo.child.size();k++){
+                    StreetInfo streetInfo = areaInfo.child.get(k);
+                    if(!streetInfo.id.equals(id)){
+                        continue;
+                    }
+                    data = streetInfo;
+                }
+            }
+        }
+        return data;
+    }
+
+    /**
+     * 根据id得到省的名称
+     * @param id 省的id
+     * @return 省的名称
+     */
+    public static String getProvinceNameById(String id){
+        String name = "广东";
+        if(id.equals("400000")){
+            name = "广东";
+        }
+        return name;
+    }
 }

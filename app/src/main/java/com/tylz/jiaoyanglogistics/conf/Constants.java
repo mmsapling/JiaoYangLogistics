@@ -62,5 +62,23 @@ public interface Constants {
     long    TIME_DELAY_LOOP_PIC       = 2000;
     int     TIME_GETCODE_MAX          = 60;//60秒
     int     TIME_GETCODE_INTERVAL     = 1;// 倒计时的时间间隔 1秒
-
+    /**
+     * 默认每页的数据为10条
+     */
+    int     SIZE_PAGE                 = 10;
+    /**
+     * 数据类型和编码
+     */
+    String  MIME_TYPE                 = "text/html";
+    String  ENCODING                  = "UTF-8";
+    /**
+     * 地址的json文件名
+     */
+    String  JSON_ADDRESS_DATA_NAME1   = "address_data_json1.txt";
+    String  JSON_ADDRESS_DATA_NAME    = "address_data_json1.txt";
+    /**
+     * 能否添加地址
+     */
+    String  IS_ADDABLE_RECEIVE_ADDRESS        = "1";
+    String  IS_ADDABLE_SEND_ADDRESS        = "1";
 }

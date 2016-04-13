@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 
 import com.tylz.jiaoyanglogistics.R;
 import com.tylz.jiaoyanglogistics.conf.Constants;
+import com.tylz.jiaoyanglogistics.model.User;
 import com.tylz.jiaoyanglogistics.util.SPUtils;
 import com.tylz.jiaoyanglogistics.util.ToastUtils;
 import com.tylz.jiaoyanglogistics.view.DProgressDialog;
@@ -28,6 +29,7 @@ public abstract class BaseFragment
     public  Activity        mContext;
     public  LayoutInflater  mLayoutInflater;
     private DProgressDialog mProgressDialog;
+    public  User            mUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public abstract class BaseFragment
         mSpUtils = new SPUtils(getActivity());
         mContext = getActivity();
         mLayoutInflater = LayoutInflater.from(mContext);
+        mUser = mSpUtils.getUser();
     }
 
     @Override
@@ -43,28 +46,37 @@ public abstract class BaseFragment
         super.onDestroyView();
 
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mUser = mSpUtils.getUser();
+    }
+
     /**
      * 对返回的数据信息进行解析，判断网络是否成功
      * @param model 数据
-     * @return  true 代表成功 ，false 代表失败
+     * @return true 代表成功 ，false 代表失败
      */
-    public boolean isSuccess(BaseModel model){
+    public boolean isSuccess(BaseModel model) {
         closeProgress();
-        if(model.code != 0 || !TextUtils.isEmpty(model.message)){
+        if (model.code != 0 || !TextUtils.isEmpty(model.message)) {
+            ToastUtils.makePicTextShortToast(mContext, Constants.ICON_TIP, model.message);
             return false;
-        }else{
+        } else {
             return true;
         }
     }
+
     /**
      * 网络连接失败
      */
-    public void connectError(){
+    public void connectError() {
         closeProgress();
         ToastUtils.makePicTextShortToast(mContext,
                                          Constants.ICON_ERROR,
                                          R.string.connect_net_error);
     }
+
     /**
      * 开启进度条
      */
@@ -77,7 +89,7 @@ public abstract class BaseFragment
      * 关闭进度条
      */
     public void closeProgress() {
-        if(mProgressDialog != null){
+        if (mProgressDialog != null) {
             mProgressDialog.dismiss();
         }
     }

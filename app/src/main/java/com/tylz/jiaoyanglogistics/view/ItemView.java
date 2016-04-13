@@ -35,6 +35,8 @@ public class ItemView
     View      mViewLine;
     @Bind(R.id.item_view_right_text)
     TextView  mTvRightText;
+    @Bind(R.id.item_view_content)
+    TextView  mTvContent;
 
     public ItemView(Context context) {
         super(context);
@@ -66,8 +68,9 @@ public class ItemView
     public void setTextAndHideIcon(int resId) {
         mIvIcon.setVisibility(View.GONE);
         mTvText.setText(UIUtils.getString(resId));
-        RelativeLayout.LayoutParams params = (LayoutParams) mTvText.getLayoutParams();
-        params.leftMargin = (int) UIUtils.getResources().getDimension(R.dimen.view_line_margin);
+        LayoutParams params = (LayoutParams) mTvText.getLayoutParams();
+        params.leftMargin = (int) UIUtils.getResources()
+                                         .getDimension(R.dimen.view_line_margin);
     }
 
     /**
@@ -77,8 +80,9 @@ public class ItemView
     public void setTextAndHideIcon(String text) {
         mIvIcon.setVisibility(View.GONE);
         mTvText.setText(text);
-        RelativeLayout.LayoutParams params = (LayoutParams) mTvText.getLayoutParams();
-        params.leftMargin = (int) UIUtils.getResources().getDimension(R.dimen.view_line_margin);
+        LayoutParams params = (LayoutParams) mTvText.getLayoutParams();
+        params.leftMargin = (int) UIUtils.getResources()
+                                         .getDimension(R.dimen.view_line_margin);
 
     }
 
@@ -109,14 +113,37 @@ public class ItemView
         mTvRightText.setText(UIUtils.getString(resId));
 
     }
+    /**
+     * 设置右侧文本，并且隐藏箭头图标
+     * @param resId  文本资源id
+     */
+    public void setRightTextAndHideArrow(String text) {
+        mIvArrow.setVisibility(View.GONE);
+        mTvRightText.setText(text);
 
+    }
     /**
      * 是否显示下划线
      * @param isShow true 显示， false 不不显示
      */
-    public void isShowLine(boolean isShow){
+    public void isShowLine(boolean isShow) {
         mViewLine.setVisibility(isShow
-                              ? View.VISIBLE
-                              : View.GONE);
+                                ? View.VISIBLE
+                                : View.GONE);
+    }
+
+    /**
+     * 设置内容
+     * @param text
+     */
+    public void setContentText(String text){
+        mTvContent.setText(text);
+    }
+    /**
+     * 设置内容
+     * @param resId
+     */
+    public void setContentText(int resId){
+        mTvContent.setText(UIUtils.getString(resId));
     }
 }

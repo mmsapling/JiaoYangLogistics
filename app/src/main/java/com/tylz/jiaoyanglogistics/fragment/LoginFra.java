@@ -20,6 +20,7 @@ import com.tylz.jiaoyanglogistics.conf.Constants;
 import com.tylz.jiaoyanglogistics.conf.NetManager;
 import com.tylz.jiaoyanglogistics.model.User;
 import com.tylz.jiaoyanglogistics.util.CommonUitls;
+import com.tylz.jiaoyanglogistics.util.MD5Utils;
 import com.tylz.jiaoyanglogistics.util.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.DCallback;
@@ -110,7 +111,7 @@ public class LoginFra
     private void login() {
         String mobile = mEtMobile.getText()
                                  .toString();
-        String pwd = mEtPwd.getText()
+        final String pwd = mEtPwd.getText()
                            .toString();
 
         if (TextUtils.isEmpty(mobile) || TextUtils.isEmpty(pwd)) {
@@ -135,15 +136,15 @@ public class LoginFra
                        @Override
                        public void onResponse(User response) {
                            if (isSuccess(response)) {
-                               mSpUtils.putBoolean(Constants.IS_LOGIN, true);
+                               //登陆成功  在本地生成口令，保存密码口令到本地
+                               mSpUtils.putBoolean(Constants.IS_LOGIN,true);
+                               String access_token = "" + response.deviceID + response.nonce;
+                               response.token = MD5Utils.encode(access_token);
+                               response.password = pwd;
                                mSpUtils.putUser(response);
                                Intent intent = new Intent(mContext, MainUserActivity.class);
                                startActivity(intent);
                                mContext.finish();
-                           } else {
-                               ToastUtils.makePicTextShortToast(mContext,
-                                                                Constants.ICON_ERROR,
-                                                                response.message);
                            }
                        }
                    });

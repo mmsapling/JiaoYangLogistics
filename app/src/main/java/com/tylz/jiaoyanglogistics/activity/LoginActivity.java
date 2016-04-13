@@ -1,5 +1,6 @@
 package com.tylz.jiaoyanglogistics.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -7,6 +8,7 @@ import android.view.View;
 
 import com.tylz.jiaoyanglogistics.R;
 import com.tylz.jiaoyanglogistics.base.BaseFragmentActivity;
+import com.tylz.jiaoyanglogistics.conf.Constants;
 import com.tylz.jiaoyanglogistics.fragment.LoginFra;
 import com.tylz.jiaoyanglogistics.fragment.RePwdFra;
 import com.tylz.jiaoyanglogistics.fragment.RegistFra;
@@ -34,7 +36,8 @@ public class LoginActivity
     @Bind(R.id.login_menu)
     TopMenu mLoginMenu;
     private boolean isLogin; //是否登陆 true 登陆， false 注册
-    private String  isShowing = TAG_LOGIN;
+    private String isShowing = TAG_LOGIN;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +60,8 @@ public class LoginActivity
         mLoginMenu.hideLeftView();
         FragmentManager     fm          = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        LoginFra fragment = (LoginFra) fm.findFragmentByTag(TAG_LOGIN);
-        if(fragment == null){
+        LoginFra            fragment    = (LoginFra) fm.findFragmentByTag(TAG_LOGIN);
+        if (fragment == null) {
             fragment = new LoginFra();
         }
         transaction.replace(R.id.container_login, fragment, TAG_LOGIN);
@@ -79,9 +82,9 @@ public class LoginActivity
                 switchLogin();
             }
         });
-        FragmentManager     fm          = getSupportFragmentManager();
-        RegistFra fragment = (RegistFra) fm.findFragmentByTag(TAG_REGIST);
-        if(fragment == null){
+        FragmentManager fm       = getSupportFragmentManager();
+        RegistFra       fragment = (RegistFra) fm.findFragmentByTag(TAG_REGIST);
+        if (fragment == null) {
             fragment = new RegistFra();
         }
         FragmentTransaction transaction = fm.beginTransaction();
@@ -103,9 +106,9 @@ public class LoginActivity
                 switchLogin();
             }
         });
-        FragmentManager     fm          = getSupportFragmentManager();
-        RePwdFra fragment = (RePwdFra) fm.findFragmentByTag(TAG_REPWD);
-        if(fragment == null){
+        FragmentManager fm       = getSupportFragmentManager();
+        RePwdFra        fragment = (RePwdFra) fm.findFragmentByTag(TAG_REPWD);
+        if (fragment == null) {
             fragment = new RePwdFra();
         }
         FragmentTransaction transaction = fm.beginTransaction();
@@ -119,9 +122,9 @@ public class LoginActivity
      */
     @Override
     public void onBackPressed() {
-        switch (isShowing){
+        switch (isShowing) {
             case TAG_LOGIN:
-                finish();
+                backOrfinish();
                 break;
             case TAG_REGIST:
                 switchLogin();
@@ -134,5 +137,20 @@ public class LoginActivity
                 break;
         }
 
+    }
+
+    /**
+     * 判断到底是销毁当前界面还是开启主页面
+     */
+    private void backOrfinish() {
+        boolean isLogin = mSPUtils.getBoolean(Constants.IS_LOGIN, false);
+        if (isLogin) {
+            //如果登陆了，就返回
+            finish();
+        } else {
+            //没有登陆 跳到首页并销毁当前页面
+            Intent intent = new Intent(this, MainUserActivity.class);
+            startActivity(intent);
+        }
     }
 }

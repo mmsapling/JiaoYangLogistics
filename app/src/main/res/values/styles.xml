@@ -99,6 +99,9 @@
         <item name="android:layout_height">@dimen/line_height</item>
         <item name="android:background">@color/line_bg</item>
     </style>
+    <style name="line_style2" parent="line_style">
+        <item name="android:layout_marginLeft">@dimen/icon_size_32</item>
+    </style>
     <!--button基本样式-->
     <style name="base_btn_style">
         <item name="android:layout_width">wrap_content</item>
@@ -135,6 +138,10 @@
     <style name="base_text_style3" parent="@style/base_text_style">
         <item name="android:textColor">@color/item_friend</item>
         <item name="android:textSize">@dimen/textsize_level3</item>
+    </style>
+    <style name="base_text_style4" parent="@style/base_text_style3">
+        <item name="android:layout_marginLeft">@dimen/margin_10</item>
+        <item name="android:layout_width">@dimen/width_100</item>
     </style>
     <!--我的页面子条目样式-->
     <style name="my_item_style">
@@ -190,5 +197,27 @@
         <item name="android:lines">2</item>
         <item name="android:gravity">center</item>
 
+    </style>
+    <!--EditText样式-->
+    <style name="EditTextStyle" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/menu_height</item>
+        <item name="android:layout_marginLeft">@dimen/icon_size_32</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">@dimen/textsize_level2</item>
+    </style>
+    <!--更多图标样式-->
+    <style name="MoreStyle">
+        <item name="android:layout_width">@dimen/view_more_size</item>
+        <item name="android:layout_height">@dimen/view_more_size</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/view_margin</item>
+        <item name="android:src">@mipmap/more</item>
+    </style>
+    <style name="price_style1" parent="@style/base_text_style2">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>

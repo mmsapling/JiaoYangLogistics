@@ -12,6 +12,7 @@ import com.tylz.jiaoyanglogistics.conf.Constants;
 import com.tylz.jiaoyanglogistics.fragment.AddressBookFra;
 import com.tylz.jiaoyanglogistics.fragment.CenterMsgFra;
 import com.tylz.jiaoyanglogistics.fragment.FriendNumberFra;
+import com.tylz.jiaoyanglogistics.fragment.PersonalInfoFra;
 import com.tylz.jiaoyanglogistics.fragment.MyApproveFra;
 import com.tylz.jiaoyanglogistics.fragment.MyPointFra;
 import com.tylz.jiaoyanglogistics.fragment.RecommendFriendFra;
@@ -37,6 +38,7 @@ public class MyActivity
     public static final  String TAG_MY_POINT         = "my_point";
     public static final  String TAG_RECOMMEND_FRIEND = "recommend_friend";
     public static final  String TAG_CENTER_MSG       = "center_msg";
+    public static final String TAG_HEAD_ICON        = "head_icon";
     private static final String TAG_FRIEND_NUMBER    = "friend_number";
     @Bind(R.id.my_top_menu)
     TopMenu     mTopMenu;
@@ -69,8 +71,35 @@ public class MyActivity
             case TAG_RECOMMEND_FRIEND:
                 switchRecommendFriend();
                 break;
+            case TAG_HEAD_ICON:
+                switcPersonalInfo();
+                break;
         }
 
+    }
+
+    /**
+     * 切换头像
+     */
+    public void switcPersonalInfo() {
+        mTopMenu.setTitle(R.string.person_info);
+        mTopMenu.setLeftIcon(R.drawable.selector_menu_back);
+        mTopMenu.hideRightView();
+        mTopMenu.setLeftIconOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        FragmentManager     fm          = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        PersonalInfoFra fra         = (PersonalInfoFra) fm.findFragmentByTag(TAG_HEAD_ICON);
+        if (fra == null) {
+            fra = new PersonalInfoFra();
+        }
+        transaction.replace(R.id.my_container, fra, TAG_HEAD_ICON);
+        transaction.commit();
     }
 
     /**
@@ -111,8 +140,7 @@ public class MyActivity
 
         FragmentManager     fm          = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        RecommendFriendFra  fra         = (RecommendFriendFra) fm.findFragmentByTag(
-                TAG_RECOMMEND_FRIEND);
+        RecommendFriendFra fra = (RecommendFriendFra) fm.findFragmentByTag(TAG_RECOMMEND_FRIEND);
         if (fra == null) {
             fra = new RecommendFriendFra();
         }
@@ -147,21 +175,6 @@ public class MyActivity
      * 切换地址薄
      */
     private void switchAddressBook() {
-        mTopMenu.setTitle(R.string.address_book);
-        mTopMenu.setLeftIcon(R.drawable.selector_menu_back);
-        mTopMenu.setRightIcon(R.drawable.selector_add_address);
-        mTopMenu.setLeftIconOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        mTopMenu.setRightIconOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: 2016/3/25 0025
-            }
-        });
         FragmentManager     fm          = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         AddressBookFra      fra         = (AddressBookFra) fm.findFragmentByTag(TAG_ADDRESS_BOOK);
@@ -204,7 +217,7 @@ public class MyActivity
         mTopMenu.setLeftIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               back();
+                back();
             }
         });
 

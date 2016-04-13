@@ -20,7 +20,16 @@
         android:gravity="center"
         android:textColor="@color/textcolor_4c"
         android:textSize="@dimen/textsize_level3"/>
-
+   <!--中间的文字-->
+    <TextView
+        android:id="@+id/item_view_content"
+        style="@style/base_text_style"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/item_view_text"
+        android:layout_marginLeft="@dimen/margin_100"
+        android:gravity="center"
+        android:textColor="@color/textcolor_4c"
+        android:textSize="@dimen/textsize_level3"/>
     <ImageView
         android:id="@+id/item_view_arrow"
         android:layout_width="@dimen/view_more_size"
@@ -33,7 +42,7 @@
         android:id="@+id/item_view_right_text"
         style="@style/base_text_style"
         android:layout_height="match_parent"
-        android:layout_marginRight="@dimen/view_margin"
+        android:layout_marginRight="@dimen/margin_20"
         android:layout_alignParentRight="true"
         android:gravity="center"
         android:textColor="@color/textcolor_4c"

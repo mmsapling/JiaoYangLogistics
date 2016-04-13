@@ -29,7 +29,7 @@
                 android:id="@+id/_et_name"
                 style="@style/item_content_et_style"
                 android:layout_toRightOf="@+id/edit_title_linkman"
-                android:text="@string/app_name"/>
+               android:hint="@string/hint_input_linkman"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
                 android:id="@+id/_et_mobile"
                 style="@style/item_content_et_style"
                 android:layout_toRightOf="@+id/edit_title_mobile"
-                android:text="@string/phone_number"/>
+                android:hint="@string/tip_input_mobile"/>
 
         </RelativeLayout>
 
@@ -82,7 +82,7 @@
                 android:id="@+id/_et_fixmobile"
                 style="@style/item_content_et_style"
                 android:layout_toRightOf="@+id/edit_title_fixmobile"
-                android:text="@string/phone_number"/>
+                android:hint="@string/hint_input_fix_mobile"/>
 
 
         </RelativeLayout>

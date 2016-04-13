@@ -109,6 +109,8 @@ public class SPUtils {
         putString("user_deviceID", user.deviceID);
         putString("user_nonce", user.nonce);
         putString("user_createdTime", user.createdTime);
+        putString("user_password",user.password);
+        putString("user_token",user.token);
     }
 
     /**
@@ -126,6 +128,8 @@ public class SPUtils {
         user.deviceID = getString("user_deviceID", "");
         user.nonce = getString("user_nonce", "");
         user.createdTime = getString("user_createdTime", "");
+        user.password = getString("user_password","");
+        user.token = getString("user_token","");
         return user;
     }
 
@@ -143,5 +147,7 @@ public class SPUtils {
         removeKey("user_deviceID");
         removeKey("user_nonce");
         removeKey("user_createdTime");
+        removeKey("user_token");
+        removeKey("user_password");
     }
 }

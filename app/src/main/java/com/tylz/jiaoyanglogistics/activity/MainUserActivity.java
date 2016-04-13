@@ -1,14 +1,13 @@
 package com.tylz.jiaoyanglogistics.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.tylz.jiaoyanglogistics.R;
@@ -20,6 +19,8 @@ import com.tylz.jiaoyanglogistics.fragment.TabMyFra;
 import com.tylz.jiaoyanglogistics.util.SPUtils;
 import com.tylz.jiaoyanglogistics.util.UIUtils;
 import com.tylz.jiaoyanglogistics.view.ChangeColorIconWithText;
+import com.tylz.jiaoyanglogistics.view.DProgressDialog;
+import com.tylz.jiaoyanglogistics.view.LazyViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +34,16 @@ import butterknife.ButterKnife;
  * @des 用户端主页面
  * @updateAuthor
  * @updateDate 2016/3/19 0019
- * @updateDes  主页面  滑动页面 撤销
+ * @updateDes 主页面
  */
 
 public class MainUserActivity
         extends FragmentActivity
-        implements View.OnClickListener
+        implements ViewPager.OnPageChangeListener, View.OnClickListener, LazyViewPager.OnPageChangeListener
 {
-    @Bind(R.id.mainuser_container)
-    FrameLayout             mMainContainer;
+    private DProgressDialog mProgressDialog;
+    @Bind(R.id.mainuser_viewpager)
+    ViewPager               mViewpager;
     @Bind(R.id.mainuser_tab_home)
     ChangeColorIconWithText mTabHome;
     @Bind(R.id.mainuser_tab_msg)
@@ -50,10 +52,10 @@ public class MainUserActivity
     ChangeColorIconWithText mTabMy;
     private List<ChangeColorIconWithText> mTabIndicators = new ArrayList<ChangeColorIconWithText>();
     private List<Fragment>                mTabs          = new ArrayList<Fragment>();
-    private FragmentPagerAdapter mAdapter;
+    private FragmentStatePagerAdapter mAdapter;
     // 再按一次退出应用程序
-    private long                 mPreClickTime;
-    private SPUtils              mSPUtils;
+    private long                      mPreClickTime;
+    private SPUtils                   mSPUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +79,7 @@ public class MainUserActivity
     }
 
     private void initListener() {
-
+        mViewpager.setOnPageChangeListener(this);
         mTabHome.setOnClickListener(this);
         mTabMsg.setOnClickListener(this);
         mTabMy.setOnClickListener(this);
@@ -93,19 +95,45 @@ public class MainUserActivity
         mTabs.add(tabHomeFra);
         mTabs.add(tabMsgFra);
         mTabs.add(tabMyFra);
-        FragmentManager     fm          = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        transaction.add(R.id.mainuser_container,tabHomeFra);
-        transaction.add(R.id.mainuser_container,tabMsgFra);
-        transaction.add(R.id.mainuser_container,tabMyFra);
-        transaction.commit();
-        switchTab(tabHomeFra);
+        mAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+
+            @Override
+            public int getCount() {
+                return mTabs.size();
+            }
+
+            @Override
+            public Fragment getItem(int position) {
+                return mTabs.get(position);
+            }
+        };
+        mViewpager.setAdapter(mAdapter);
     }
 
     private void initView() {
         mTabHome.setIconAlpha(1.0f);
+        mViewpager.setOffscreenPageLimit(2);
     }
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        if (positionOffset > 0) {
+            ChangeColorIconWithText left = mTabIndicators.get(position);
+            ChangeColorIconWithText right = mTabIndicators.get(position + 1);
+            left.setIconAlpha(1 - positionOffset);
+            right.setIconAlpha(positionOffset);
+        }
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
 
     @Override
     public void onClick(View v) {
@@ -118,19 +146,41 @@ public class MainUserActivity
             case R.id.mainuser_tab_home:
                 mTabIndicators.get(0)
                               .setIconAlpha(1.0f);
-                switchTab(mTabs.get(0));
+                mViewpager.setCurrentItem(0, false);
                 break;
             case R.id.mainuser_tab_msg:
                 mTabIndicators.get(1)
                               .setIconAlpha(1.0f);
-                switchTab(mTabs.get(1));
+                mViewpager.setCurrentItem(1, false);
                 break;
             case R.id.mainuser_tab_my:
-                mTabIndicators.get(2)
-                              .setIconAlpha(1.0f);
-                switchTab(mTabs.get(2));
+
+                if (isLogin()) {
+                    mTabIndicators.get(2)
+                                  .setIconAlpha(1.0f);
+                    mViewpager.setCurrentItem(2, false);
+                } else {
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    startActivity(intent);
+                }
+
                 break;
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        /*
+              当用户没有登陆时，登陆后便不再做处理
+            为了退出登陆时，重新进入主页面， 防止看到 点击我的  而不是跳转到登陆页面
+         */
+        if(!isLogin()){
+            mTabIndicators.get(0)
+                          .setIconAlpha(1.0f);
+            mViewpager.setCurrentItem(0, false);
+        }
+
     }
 
     /**
@@ -169,17 +219,5 @@ public class MainUserActivity
 
         boolean isLogin = mSPUtils.getBoolean(Constants.IS_LOGIN, false);
         return isLogin;
-    }
-
-    public void switchTab(Fragment fragment) {
-        FragmentManager     fm          = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        for (int i = 0; i < mTabs.size(); i++) {
-            if (mTabs.get(i) != fragment) {
-                transaction.hide(mTabs.get(i));
-            }
-        }
-        transaction.show(fragment);
-        transaction.commit();
     }
 }

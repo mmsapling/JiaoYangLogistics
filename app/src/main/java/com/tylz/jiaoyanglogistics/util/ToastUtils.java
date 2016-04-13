@@ -1,6 +1,7 @@
 package com.tylz.jiaoyanglogistics.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,8 +27,8 @@ public class ToastUtils {
      * @param resId    图片资源id
      * @param tipResId      提示文字
      */
-    public static void makePicTextShortToast(Activity activity, int resId, int tipResId) {
-        View view = activity.getLayoutInflater().inflate(R.layout.view_toast_pic, null);
+    public static void makePicTextShortToast(Context activity, int resId, int tipResId) {
+        View view = View.inflate(activity,R.layout.view_toast_pic, null);
         ImageView ivPic = (ImageView) view.findViewById(R.id.toast_iv_pic);
         ivPic.setImageResource(resId);
         TextView tvTip = (TextView) view.findViewById(R.id.toast_tv_tip);
@@ -45,8 +46,8 @@ public class ToastUtils {
      * @param resId    图片资源id
      * @param tip     提示文字
      */
-    public static void makePicTextShortToast(Activity activity, int resId, String tip) {
-        View view = activity.getLayoutInflater().inflate(R.layout.view_toast_pic, null);
+    public static void makePicTextShortToast(Context activity, int resId, String tip) {
+        View view = View.inflate(activity,R.layout.view_toast_pic, null);
         ImageView ivPic = (ImageView) view.findViewById(R.id.toast_iv_pic);
         ivPic.setImageResource(resId);
         TextView tvTip = (TextView) view.findViewById(R.id.toast_tv_tip);

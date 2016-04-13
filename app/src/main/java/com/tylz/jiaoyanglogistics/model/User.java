@@ -22,4 +22,6 @@ public class User extends BaseModel {
     public String nonce;//QiXTCEMY
     public String point;//0
     public String username;//	user_8888
+    public String token; //口令
+    public String password; //密码
 }

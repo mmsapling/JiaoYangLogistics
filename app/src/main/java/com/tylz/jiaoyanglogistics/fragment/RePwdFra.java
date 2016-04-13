@@ -50,7 +50,7 @@ public class RePwdFra
     Button   mBtConfirm;
     @Bind(R.id.login_tv_contact)
     TextView mTvContact;
-    private Code mCodeInfo;
+    private Code mCodeInfo = new Code();
 
     @Override
     public View initRootView() {
@@ -76,8 +76,7 @@ public class RePwdFra
         ButterKnife.unbind(this);
     }
 
-    @OnClick({
-              R.id.login_bt_confirm,
+    @OnClick({R.id.login_bt_confirm,
               R.id.login_tv_contact})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -152,10 +151,6 @@ public class RePwdFra
                                                                 R.string.toast_edit_pwd_success);
                                LoginActivity activity = (LoginActivity) getActivity();
                                activity.switchLogin();
-                           } else {
-                               ToastUtils.makePicTextShortToast(mContext,
-                                                                Constants.ICON_ERROR,
-                                                                response.message);
                            }
                        }
                    });
@@ -189,10 +184,6 @@ public class RePwdFra
                        public void onResponse(Code response) {
                          if(isSuccess(response)){
                              mCodeInfo = response;
-                         }else{
-                             ToastUtils.makePicTextShortToast(mContext,
-                                                              Constants.ICON_ERROR,
-                                                              response.message);
                          }
                        }
                    });

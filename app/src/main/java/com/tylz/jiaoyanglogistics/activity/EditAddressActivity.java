@@ -97,12 +97,12 @@ public class EditAddressActivity
     }
 
     private void setData(Address address) {
-        mEtName.setText(address.name);
+        mEtName.setText(address.username);
         mEtMobile.setText(address.mobile);
         mEtFixmobile.setText(address.fixMobile);
         mTvArea.setText(address.area);
         mEtAddress.setText(address.address);
-        if (address.isDefault) {
+        if (address.status.equals("1")) {
             mToggleButton.setToggleOn(true);
         } else {
             mToggleButton.setToggleOff(true);
@@ -145,18 +145,20 @@ public class EditAddressActivity
         //判断是否为空
         boolean isEmpty = TextUtils.isEmpty(name) || TextUtils.isEmpty(mobile) || TextUtils.isEmpty(
                 fixMobile) || TextUtils.isEmpty(area) || TextUtils.isEmpty(address);
-        if(isEmpty){
-            ToastUtils.makePicTextShortToast(this,Constants.ICON_TIP,R.string.page_address_tip);
+        if (isEmpty) {
+            ToastUtils.makePicTextShortToast(this, Constants.ICON_TIP, R.string.page_address_tip);
             return;
         }
-        mAddress.name = name;
+        mAddress.username = name;
         mAddress.mobile = mobile;
         mAddress.fixMobile = fixMobile;
         mAddress.area = area;
         mAddress.address = address;
-        mAddress.isDefault = isToggle;
+        mAddress.status = isToggle == true
+                          ? "1"
+                          : "0";
         Intent data = new Intent();
-        data.putExtra(Constants.TAG,mAddress);
+        data.putExtra(Constants.TAG, mAddress);
         setResult(RESULT_CODE_EDIT, data);
         finish();
     }

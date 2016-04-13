@@ -31,7 +31,7 @@ public abstract class DCallback<T>
     {
         String result = response.body()
                                 .string();
-        Log.d("tylz",result);
+        Log.d("OkHttpUtils", result);
         //解析对象
         JsonParser  parser     = new JsonParser();
         JsonElement root       = parser.parse(result);

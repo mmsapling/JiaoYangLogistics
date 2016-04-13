@@ -85,6 +85,7 @@
     <string name="tip_input_code">请输入验证码！</string>
     <!--消息-->
     <string name="news_information">新闻资讯</string>
+    <string name="news_detail">新闻详情</string>
     <string name="more_loading">正在加载</string>
     <string name="loaderror_click_reload">加载失败，点击重试</string>
     <string name="long_temp_text">我是一只小蜜蜂啊，飞啊，飞啊，飞到花丛中啊，嘎嘎嘎！哈哈，花朵好漂亮啊，踩啊踩啊</string>
@@ -153,6 +154,19 @@
     <string name="point_detail">积分明细</string>
     <string name="exchange_recorder">兑换记录</string>
     <string name="exchange">兑换</string>
+    <string name="add_receive_address">添加收货人地址</string>
+    <string name="add_send_address">添加发货人地址</string>
+    <string name="head_icon">头像</string>
+    <string name="name">姓名</string>
+    <string name="person_info">个人信息</string>
+    <string name="qq">QQ</string>
+    <string name="company_name">公司名称</string>
+    <string name="hint_input_qq">请输入QQ号</string>
+    <string name="upload_success">上传成功！</string>
+    <string name="nick_name">昵称</string>
+    <string name="hint_input_nickname">请输入昵称！</string>
+    <string name="success_edit_nickname">修改昵称成功！</string>
+
     <!--登陆-->
     <string name="success_regist">注册成功</string>
     <string name="connect_net_error">网络连接失败！</string>
@@ -160,4 +174,60 @@
     <string name="tip_code_error">验证码错误！</string>
     <string name="tip_input_pwd">请输入密码！</string>
     <string name="tip_pwd_equals">两次输入密码不一致！</string>
+    <!--在线下单-->
+    <string name="detail_des_address">详细终点地址</string>
+    <string name="detail_start_address">详细起点地址</string>
+    <string name="goods_type">货物类型</string>
+    <string name="size_or_weight">体积/重量</string>
+    <string name="car_type">车型(尺柜)</string>
+    <string name="receive_mobile">收货电话</string>
+    <string name="remark">备注</string>
+    <string name="immediately_order">立即下单</string>
+    <string name="car_date">装车日期*</string>
+    <string name="select_date">请选择日期</string>
+    <string name="address_info">地址信息*</string>
+    <string name="goods_info">货物信息*</string>
+    <string name="launch_info">运载信息*</string>
+    <string name="remark_hint">暂时没有任何疑问！</string>
+    <string name="enter_info">报关信息*</string>
+    <string name="enter_mainload">大陆报关</string>
+    <string name="select_enter_type">请选择报关类型</string>
+    <string name="select_size_or_weight">请填写体积/重量</string>
+    <string name="enter_way">报关方式</string>
+    <string name="select_enter_way">请选择报关方式</string>
+    <string name="query">查询</string>
+    <string name="detail_price">价格详情</string>
+    <string name="hello">你好！</string>
+    <string name="price_detail1">大陆运费</string>
+    <string name="price_detail2">大陆报关费</string>
+    <string name="price_detail3">香港报关费</string>
+    <string name="price_detail4">公路仓单费</string>
+    <string name="price_detail5">卸货费</string>
+    <string name="logout">退出登录</string>
+    <string name="hint_input_feedback">请输入你的意见！</string>
+    <!--设置-->
+    <string name="feedback">意见反馈</string>
+    <string name="pwd_edit">密码修改</string>
+    <string name="input_old_pwd">请输入原始密码！</string>
+    <string name="tip_oldpwd_error">原始密码错误！</string>
+    <string name="about_us">关于我们</string>
+    <string name="tip_update">当前已是最新版本！</string>
+    <string name="tip_no_support">暂不支持这项功能！</string>
+    <string name="confirm_logout">确定退出吗？</string>
+    <string name="thanks_feedback">非常感谢你的反馈！</string>
+    <!--签收订单-->
+    <string name="send_time">送达时间：</string>
+    <string name="send_time_">已送到指定仓库，请确认签单！</string>
+    <string name="goods_num">货运单号：</string>
+    <string name="order_num">订单号：</string>
+    <string name="hint_input_linkman">请输入联系人！</string>
+    <string name="hint_input_fix_mobile">请输入固定电话！</string>
+    <string name="hint_input_detail_address">请输入详细地址！</string>
+    <string name="set_default_address">设为默认地址！</string>
+    <string name="error_parse_json">解析Json文件出错！</string>
+    <string name="success_add_send_address">添加发货地址成功！</string>
+    <string name="success_delete_receive_address">删除收货人地址成功！</string>
+
+
 </resources>
+

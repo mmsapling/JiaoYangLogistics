@@ -52,7 +52,7 @@ public class RegistFra
     TextView mTvForgetpwd;
     @Bind(R.id.login_tv_registnow)
     TextView mTvRegistnow;
-    private Code mCodeInfo;
+    private Code mCodeInfo = new Code();
 
     @Override
     public View initRootView() {
@@ -146,10 +146,6 @@ public class RegistFra
                                                                 R.string.success_regist);
                                LoginActivity activity = (LoginActivity) getActivity();
                                activity.switchLogin();
-                           } else {
-                               ToastUtils.makePicTextShortToast(mContext,
-                                                                Constants.ICON_ERROR,
-                                                                response.message);
                            }
                        }
                    });
@@ -183,10 +179,6 @@ public class RegistFra
                        public void onResponse(Code response) {
                            if (isSuccess(response)) {
                                mCodeInfo = response;
-                           } else {
-                               ToastUtils.makePicTextShortToast(mContext,
-                                                                Constants.ICON_ERROR,
-                                                                response.message);
                            }
                        }
                    });

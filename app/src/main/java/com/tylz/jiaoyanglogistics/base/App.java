@@ -93,8 +93,9 @@ public class App
         functionConfigBuilder.setEnableCamera(true)
                              .setEnableEdit(true)
                              .setEnableCrop(true)
-                             .setCropHeight(200)
-                             .setCropWidth(200)
+                             .setCropHeight(320)
+                            .setForceCrop(true)
+                             .setCropWidth(320)
                              .setCropReplaceSource(true)
                              .setRotateReplaceSource(true)
                              .setEnableRotate(true);

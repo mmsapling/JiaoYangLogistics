@@ -1,6 +1,6 @@
 package com.tylz.jiaoyanglogistics.fragment;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,18 +12,23 @@ import android.view.ViewGroup;
 import com.hellosliu.easyrecyclerview.LoadMoreRecylerView;
 import com.hellosliu.easyrecyclerview.listener.OnRefreshListener;
 import com.tylz.jiaoyanglogistics.R;
+import com.tylz.jiaoyanglogistics.activity.NewsDetailActivity;
 import com.tylz.jiaoyanglogistics.adapter.NewsInfoAdapter;
-import com.tylz.jiaoyanglogistics.adapter.TempAdapter;
 import com.tylz.jiaoyanglogistics.base.BaseFragment;
 import com.tylz.jiaoyanglogistics.conf.Constants;
-import com.tylz.jiaoyanglogistics.util.ToastUtils;
+import com.tylz.jiaoyanglogistics.conf.ItemClickListener;
+import com.tylz.jiaoyanglogistics.conf.NetManager;
+import com.tylz.jiaoyanglogistics.model.News;
 import com.tylz.jiaoyanglogistics.view.TopMenu;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.DCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
 
 /**
  * @author tylz
@@ -35,7 +40,7 @@ import butterknife.ButterKnife;
  */
 public class TabMsgFra
         extends BaseFragment
-        implements SwipeRefreshLayout.OnRefreshListener
+        implements SwipeRefreshLayout.OnRefreshListener, ItemClickListener
 {
     @Bind(R.id._top_menu)
     TopMenu             mTopMenu;
@@ -44,9 +49,10 @@ public class TabMsgFra
     @Bind(R.id._swipe_refresh)
     SwipeRefreshLayout  mSwipeRefresh;
 
-    private List<String> mDatas = new ArrayList<String>();
+    private List<News.NewsInfo> mDatas = new ArrayList<News.NewsInfo>();
     private NewsInfoAdapter mAdapter;
-    private TempAdapter     mTempAdapter;
+    private int mStart  = 0;
+    private int mLenght = Constants.SIZE_PAGE;
 
 
     @Nullable
@@ -74,46 +80,40 @@ public class TabMsgFra
     }
 
     private void setRecycleView() {
-        addDatas(mDatas);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        showProgress();
+        refreshOrLoadMore(mStart, mLenght, true);
 
-        mAdapter = new NewsInfoAdapter(getActivity(), mDatas);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdapter = new NewsInfoAdapter(mContext, mDatas);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
         mRecyclerView.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ToastUtils.makePicTextShortToast(mContext,Constants.ICON_SUCCESS,R.string.tip);
-                addDatas(mDatas);
-                mAdapter.notifyDataSetChanged();
                 mRecyclerView.onRefreshComplete();
+                if (mSwipeRefresh.isRefreshing()) {
+
+                    return;
+                }
+                if (mDatas.size() < mLenght) {
+                    refreshOrLoadMore(mStart, mLenght, false);
+                } else {
+                    mStart = mStart + mLenght;
+                    refreshOrLoadMore(mStart, mLenght, true);
+                }
+
             }
 
             @Override
             public void onReload() {
                 //网络连接失败时的重新加载
-                ToastUtils.makePicTextShortToast(mContext,Constants.ICON_ERROR,R.string.tip);
-                addDatas(mDatas);
-                mAdapter.notifyDataSetChanged();
-                mRecyclerView.onRefreshComplete();
             }
         });
     }
 
     private void initListener() {
         mSwipeRefresh.setColorSchemeColors(R.color.onange, R.color.green, R.color.blue);
-
         mSwipeRefresh.setOnRefreshListener(this);
-
-    }
-
-
-
-    private void addDatas(List<String> datas) {
-        int size = datas.size();
-        for (int i = size; i < size + 5; i++) {
-            datas.add(Constants.TAG + i);
-        }
+        mAdapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -125,21 +125,56 @@ public class TabMsgFra
 
     @Override
     public void onRefresh() {
-        new AsyncTask<Void, Void, Void>() {
+        mSwipeRefresh.setRefreshing(true);
 
-            @Override
-            protected Void doInBackground(Void... params) {
+        refreshOrLoadMore(0, mStart, false);
+    }
 
-                addDatas(mDatas);
-                return null;
-            }
+    /**
+     * 刷新或者加载更多
+     * @param startIndex 起始位置
+     * @param pageSize 数据个数
+     * @param isLoadMore true表示加载更多
+     */
+    private void refreshOrLoadMore(int startIndex, int pageSize, final boolean isLoadMore) {
+        String start  = String.valueOf(startIndex);
+        String length = String.valueOf(pageSize);
+        OkHttpUtils.post()
+                   .url(NetManager.User.NEWS_LIST)
+                   .addParams(NetManager.START, start)
+                   .addParams(NetManager.LENGTH, length)
+                   .build()
+                   .execute(new DCallback<News>() {
+                       @Override
+                       public void onError(Call call, Exception e) {
+                           connectError();
+                           mSwipeRefresh.setRefreshing(false);
+                       }
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                mAdapter.notifyDataSetChanged();
-                mSwipeRefresh.setRefreshing(false);
-            }
-        }.execute();
+                       @Override
+                       public void onResponse(News response) {
+                           if (isSuccess(response)) {
+                               if (!isLoadMore) {
+                                   mDatas = response.list;
+                               } else {
+                                   for (News.NewsInfo info : response.list) {
+                                       mDatas.add(info);
+                                   }
+                               }
+                               mAdapter = new NewsInfoAdapter(mContext, mDatas);
+                               mRecyclerView.setAdapter(mAdapter);
+                               mAdapter.setOnItemClickListener(TabMsgFra.this);
+                           }
+                           mSwipeRefresh.setRefreshing(false);
+                       }
+                   });
+    }
 
+    @Override
+    public void onItemClick(View v) {
+        News.NewsInfo info = (News.NewsInfo) v.getTag();
+        Intent intent = new Intent(mContext, NewsDetailActivity.class);
+        intent.putExtra(Constants.TAG,  info);
+        startActivity(intent);
     }
 }

@@ -31,7 +31,12 @@ public class ShipperAddressFra
         TextView view = new TextView(mContext);
         view.setText(this.getClass().getSimpleName());
         view.setGravity(Gravity.CENTER);
+        init();
         return view;
+    }
+
+    private void init() {
+
     }
 
 }
