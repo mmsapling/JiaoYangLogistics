@@ -19,6 +19,8 @@ import com.tylz.jiaoyanglogistics.model.IsOk;
 import com.tylz.jiaoyanglogistics.model.User;
 import com.tylz.jiaoyanglogistics.util.SPUtils;
 import com.tylz.jiaoyanglogistics.util.ToastUtils;
+import com.tylz.jiaoyanglogistics.util.UIUtils;
+import com.tylz.jiaoyanglogistics.view.DAlertDialog;
 import com.tylz.jiaoyanglogistics.view.DProgressDialog;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.DCallback;
@@ -72,13 +74,30 @@ public class AddressInfoAdapter
         holder.mBtDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isReceive) {
-                    //刪除收货人地址
-                    deleteReceive(position);
-                } else {
-                    //删除发货人地址
-                    deleteSend(position);
-                }
+
+                new DAlertDialog(mContext).builder()
+                                          .setTitle(UIUtils.getString(R.string.tip))
+                                          .setMsg(UIUtils.getString(R.string.tip_delete))
+                                          .setPositiveButton(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  if (isReceive) {
+                                                      //刪除收货人地址
+                                                      deleteReceive(position);
+                                                  } else {
+                                                      //删除发货人地址
+                                                      deleteSend(position);
+                                                  }
+                                              }
+                                          })
+                                          .setNegativeButton(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  //空实现
+                                              }
+                                          })
+                                          .show();
+
 
             }
         });

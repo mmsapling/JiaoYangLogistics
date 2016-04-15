@@ -122,6 +122,12 @@ public class TabHomeFra
     }
 
     private void processLoopPicData(LoopPic loopPic) {
+        if(loopPic == null){
+            loopPic = new LoopPic();
+        }
+        if(loopPic.sliders == null){
+            loopPic.sliders = new ArrayList<LoopPic.LoopPicInfo>();
+        }
         mLoopDatas = loopPic.sliders;
         for (int i = 0; i < loopPic.sliders.size(); i++) {
             //添加指示器
@@ -164,17 +170,6 @@ public class TabHomeFra
 
             }
         });
-
-//        int index = Integer.MAX_VALUE / 2;
-//        int diffx = Integer.MAX_VALUE / 2 % mLoopDatas.size();
-//        index = index - diffx;
-//        mViewpager.setCurrentItem(index);
-//        mViewpager.getHandler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        },2000);
         autoLoop();
     }
 
@@ -182,7 +177,7 @@ public class TabHomeFra
      * 轮播
      */
     private void autoLoop() {//左右无限轮播
-        mViewpager.setCurrentItem(mLoopDatas.size() * 1000);
+        mViewpager.setCurrentItem(mLoopDatas.size() * 100);
         //实现自动轮播
         mAutoScrollTask = new AutoScrollTask(mViewpager);
         mAutoScrollTask.start();
@@ -345,7 +340,7 @@ public class TabHomeFra
                        @Override
                        public void onResponse(LoopPic response) {
                            if (isSuccess(response)) {
-                               processLoopPicData(response);
+                              processLoopPicData(response);
                            }
                        }
                    });

@@ -19,7 +19,7 @@ import com.tylz.jiaoyanglogistics.conf.ItemClickListener;
 import com.tylz.jiaoyanglogistics.conf.NetManager;
 import com.tylz.jiaoyanglogistics.model.Address;
 import com.tylz.jiaoyanglogistics.model.AddressListModel;
-import com.tylz.jiaoyanglogistics.util.LogUtils;
+import com.tylz.jiaoyanglogistics.model.AddressModel;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.DCallback;
 
@@ -43,7 +43,7 @@ public class ConSigneesAddressFra
         extends BaseFragment
         implements SwipeRefreshLayout.OnRefreshListener
 {
-    public static final int REQUESTCODE_CONSIGNE_EDIT = 101;
+    public static final int REQUESTCODE_CONSIGNE_EDIT = 2001;
     @Bind(R.id._recycler_view)
     EasyRecylerView    mRecyclerView;
     @Bind(R.id._swipe_refresh)
@@ -57,25 +57,16 @@ public class ConSigneesAddressFra
                              ViewGroup container,
                              Bundle savedInstanceState)
     {
-        LogUtils.d("onCreateView");
         View view = mLayoutInflater.inflate(R.layout.fra_consigness_adress, container, false);
         ButterKnife.bind(this, view);
+        setRecyclerView();
         return view;
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        LogUtils.d("onActivityCreated");
-        setRecyclerView();
-    }
-
     @Override
     public void onResume() {
-        loadData();
-        super.onResume();
-        LogUtils.d("onResume");
 
+        super.onResume();
+        loadData();
     }
 
     private void loadData() {
@@ -87,7 +78,9 @@ public class ConSigneesAddressFra
                    .execute(new DCallback<AddressListModel>() {
                        @Override
                        public void onError(Call call, Exception e) {
-                           mSwipeRefresh.setRefreshing(false);
+                           if(mSwipeRefresh.isRefreshing()){
+                               mSwipeRefresh.setRefreshing(false);
+                           }
                            connectError();
                        }
 
@@ -96,17 +89,19 @@ public class ConSigneesAddressFra
                            if (isSuccess(response)) {
                                mSpUtils.putString(Constants.IS_ADDABLE_RECEIVE_ADDRESS,
                                                   response.isAddable);
-                               mDatas = response.list;
+                               mDatas.clear();
+                               mDatas.addAll(response.list);
 
                                if (mDatas.size() > 0 && mDatas != null) {
                                    mAdapter.notifyDataSetChanged();
                                }
-                               mSwipeRefresh.setRefreshing(false);
+                               if(mSwipeRefresh.isRefreshing()){
+                                    mSwipeRefresh.setRefreshing(false);
+                               }
                            }
                        }
                    });
     }
-
 
     private void setRecyclerView() {
         mSwipeRefresh.setColorSchemeColors(R.color.red, R.color.green, R.color.blue);
@@ -130,7 +125,6 @@ public class ConSigneesAddressFra
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
-        LogUtils.d("onDestroyView");
     }
 
     @Override
@@ -141,11 +135,11 @@ public class ConSigneesAddressFra
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        LogUtils.d("onActivityResult");
-        if (requestCode == REQUESTCODE_CONSIGNE_EDIT && resultCode == EditAddressActivity.RESULT_CODE_EDIT) {
+        //这里的requestCode 和 请求的requestCode 不一致，不知道为什么，但是结果码是一致的
+        if (resultCode == EditAddressActivity.RESULT_CODE_EDIT) {
             if (data != null) {
-                Address address = (Address) data.getSerializableExtra(Constants.TAG);
-                mDatas.set(address.postion, address);
+                AddressModel address = (AddressModel) data.getSerializableExtra(Constants.TAG);
+                mDatas.set(address.address.postion, address.address);
                 mAdapter.notifyDataSetChanged();
             }
         }

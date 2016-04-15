@@ -18,7 +18,7 @@
         tylz:pstsSelectedTabTextSize="@dimen/textsize_level2"
         tylz:pstsSelectedTabTextColor="@color/indicator_color"/>
 
-    <com.astuetz.LazyViewPager
+    <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

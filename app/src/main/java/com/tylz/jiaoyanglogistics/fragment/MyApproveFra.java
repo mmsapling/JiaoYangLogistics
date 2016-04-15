@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.astuetz.LazyViewPager;
 import com.astuetz.PagerSlidingTabStripExtends;
 import com.tylz.jiaoyanglogistics.R;
 import com.tylz.jiaoyanglogistics.base.BaseFragment;
@@ -33,7 +33,7 @@ public class MyApproveFra
     @Bind(R.id.tabs)
     PagerSlidingTabStripExtends mTabs;
     @Bind(R.id.viewpager)
-    LazyViewPager               mViewpager;
+    ViewPager                   mViewpager;
     private FragmentPagerAdapter mAdapter;
     private String[] mTabTitles = UIUtils.getStrings(R.array.my_approves);
 
@@ -72,7 +72,7 @@ public class MyApproveFra
             }
         };
         mViewpager.setAdapter(mAdapter);
-        mTabs.setLazyViewPager(mViewpager);
+        mTabs.setViewPager(mViewpager);
     }
 
     @Override

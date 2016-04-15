@@ -59,6 +59,9 @@ public abstract class BaseFragment
      */
     public boolean isSuccess(BaseModel model) {
         closeProgress();
+        if(model == null){
+            return false;
+        }
         if (model.code != 0 || !TextUtils.isEmpty(model.message)) {
             ToastUtils.makePicTextShortToast(mContext, Constants.ICON_TIP, model.message);
             return false;

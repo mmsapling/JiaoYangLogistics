@@ -299,6 +299,20 @@ public class CommonUitls {
     }
 
     /**
+     * 得到所有的市
+     * @param datas  地址数据
+     * @return  返回市信息集合
+     */
+    public static List<CityInfo> getAllCityInfo(AddressInfo datas){
+        List<CityInfo> list= new ArrayList<CityInfo>();
+        //初始化 地址数据
+        for (int i = 0; i < datas.address.size(); i++) {
+            CityInfo cityInfo = datas.address.get(i);
+            list.add(cityInfo);
+        }
+        return list;
+    }
+    /**
      * 根据城市名 获取这个城市下面的所有区域
      */
     public static List<AreaInfo> getAreaDataByCityName(AddressInfo datas, CityInfo city) {
@@ -317,7 +331,25 @@ public class CommonUitls {
 
         return areaDatas;
     }
+    /**
+     * 根据城市名 获取这个城市下面的所有区域
+     */
+    public static List<AreaInfo> getAreaDataByCityId(AddressInfo datas, String id) {
+        List<AreaInfo> areaDatas = new ArrayList<AreaInfo>();
+        for (int i = 0; i < datas.address.size(); i++) {
+            CityInfo cityInfo = datas.address.get(i);
+            if (!cityInfo.id.equals(id)) {
+                continue;
+            }
+            for (int j = 0; j < cityInfo.child.size(); j++) {
+                AreaInfo areaInfo = cityInfo.child.get(j);
+                areaDatas.add(areaInfo);
+            }
+        }
 
+
+        return areaDatas;
+    }
     /**
      * 根据城市名 ,区域名获取这个城市下面的所有区域
      */
@@ -345,7 +377,33 @@ public class CommonUitls {
         }
         return streetDatas;
     }
+    /**
+     * 根据城市名 ,区域名获取这个城市下面的所有区域
+     */
+    public static List<StreetInfo> getStreetDataByAreaId(AddressInfo datas,
+                                                           String cityId,
+                                                           String areaId)
+    {
+        List<StreetInfo> streetDatas = new ArrayList<StreetInfo>();
 
+        for (int i = 0; i < datas.address.size(); i++) {
+            CityInfo cityInfo = datas.address.get(i);
+            if (!cityInfo.id.equals(cityId)) {
+                continue;
+            }
+            for (int j = 0; j < cityInfo.child.size(); j++) {
+                AreaInfo areaInfo = cityInfo.child.get(j);
+                if (!areaInfo.id.equals(areaId)) {
+                    continue;
+                }
+                for (int k = 0; k < areaInfo.child.size(); k++) {
+                    StreetInfo streetInfo = areaInfo.child.get(k);
+                    streetDatas.add(streetInfo);
+                }
+            }
+        }
+        return streetDatas;
+    }
     /**
      * 根据id找城市信息
      * @param datas 地址数据

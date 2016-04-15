@@ -11,6 +11,7 @@
         android:layout_height="@dimen/menu_height">
         <TextView
             android:layout_marginLeft="@dimen/my_margin"
+            android:text="@string/check_status"
            style="@style/status_style"/>
         <TextView
             android:id="@+id/_tv_status"
@@ -79,7 +80,7 @@
                 android:layout_marginLeft="@dimen/my_head_margin"
                 android:layout_toRightOf="@id/_tv_title_id"
                 android:background="@null"
-                android:maxLength="6"
+                android:maxLength="18"
                 android:hint="@string/hint_idcard"
                 android:textSize="@dimen/textsize_level2"/>
             <View
@@ -121,5 +122,5 @@
             android:id="@+id/_bt_status"
             style="@style/base_btn_style2"
             android:layout_marginTop="@dimen/my_head_margin"
-            android:text="@string/check_status"/>
+            android:text="@string/submit_check_status"/>
 </LinearLayout>

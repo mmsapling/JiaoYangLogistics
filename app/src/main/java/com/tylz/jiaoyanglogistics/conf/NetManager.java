@@ -19,7 +19,7 @@ public interface NetManager {
         String LOGIN  = SERVER_USER + "Login/login"; //登陆
         String VERIFY = SERVER_USER + "Login/verify"; //验证码
 
-        String REGIST                   = SERVER_USER + "Login/register"; //注册
+        String REGIST = SERVER_USER + "Login/register"; //注册
         String FINDPASSWORD             = SERVER_USER + "Login/findPassword"; //注意，忘记密码，不是找回密码
         String MODIFYPASSWORD           = SERVER_USER + "User/modifyPassword"; //注意，修改密码，不是忘记密码
         String NEWS_LIST                = SERVER_USER + "Common/newsList";//新闻列表
@@ -31,9 +31,13 @@ public interface NetManager {
         String MODIFY_USERNAME          = SERVER_USER + "User/modifyUsername";//修改昵称
         String USER_FEEDBACK            = SERVER_USER + "User/userFeedback";//意见反馈
         String ADD_RECEIPT_ADDRESS      = SERVER_USER + "User/addReceiptAddress";//添加用户收获地址
-        String ADD_DELIVERY_ADDRESS      = SERVER_USER + "User/addDeliveryAddress";//添加用户发获地址
-        String DELETE_RECEIPT_ADDRESS      = SERVER_USER + "User/deleteReceiptAddress";//删除用户收获地址
-        String DELETE_DELIVERY_ADDRESS      = SERVER_USER + "User/deleteDeliveryAddress";//删除用户发获地址
+        String ADD_DELIVERY_ADDRESS     = SERVER_USER + "User/addDeliveryAddress";//添加用户发获地址
+        String DELETE_RECEIPT_ADDRESS   = SERVER_USER + "User/deleteReceiptAddress";//删除用户收获地址
+        String DELETE_DELIVERY_ADDRESS  = SERVER_USER + "User/deleteDeliveryAddress";//删除用户发获地址
+        String EDIT_DELIVERY_ADDRESS    = SERVER_USER + "User/editDeliveryAddress";//编辑用户发获地址
+        String EDIT_RECEIPT_ADDRESS     = SERVER_USER + "User/editReceiptAddress";//编辑用户收获地址
+        String SAVE_USER_AUTH           = SERVER_USER + "User/saveUserAuth";//提交用户认证信息
+        String USER_AUTH_INFO           = SERVER_USER + "User/userAuthInfo";//用户认证信息
 
     }
 
@@ -57,6 +61,7 @@ public interface NetManager {
     String STREET        = "street";//街道
     String ADDRESS       = "address";//详细地址
     String STATUS        = "status";//是否为默认地址
-
+    String IDNO          = "IDNO";
+    String PICTURE       = "picture";
 
 }

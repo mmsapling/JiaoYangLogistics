@@ -1,6 +1,8 @@
 package com.tylz.jiaoyanglogistics.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -12,10 +14,11 @@ import com.tylz.jiaoyanglogistics.conf.Constants;
 import com.tylz.jiaoyanglogistics.fragment.AddressBookFra;
 import com.tylz.jiaoyanglogistics.fragment.CenterMsgFra;
 import com.tylz.jiaoyanglogistics.fragment.FriendNumberFra;
-import com.tylz.jiaoyanglogistics.fragment.PersonalInfoFra;
 import com.tylz.jiaoyanglogistics.fragment.MyApproveFra;
 import com.tylz.jiaoyanglogistics.fragment.MyPointFra;
+import com.tylz.jiaoyanglogistics.fragment.PersonalInfoFra;
 import com.tylz.jiaoyanglogistics.fragment.RecommendFriendFra;
+import com.tylz.jiaoyanglogistics.util.LogUtils;
 import com.tylz.jiaoyanglogistics.view.TopMenu;
 
 import butterknife.Bind;
@@ -256,5 +259,12 @@ public class MyActivity
         } else {
             finish();
         }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment        fragment = fm.findFragmentByTag(TAG_ADDRESS_BOOK);
+        fragment.onActivityResult(requestCode,resultCode,data);
     }
 }

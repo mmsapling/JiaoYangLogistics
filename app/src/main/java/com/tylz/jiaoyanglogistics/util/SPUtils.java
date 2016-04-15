@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import com.tylz.jiaoyanglogistics.conf.Constants;
+import com.tylz.jiaoyanglogistics.model.Address;
 import com.tylz.jiaoyanglogistics.model.User;
 
 
@@ -112,7 +113,23 @@ public class SPUtils {
         putString("user_password",user.password);
         putString("user_token",user.token);
     }
+    /**
+     * 存放用户接收地址信息
+     * @param address
+     */
+    public void putReceiveAddress(Address address) {
+        putString("address_receive_id", address.id);
+        putString("address_receive_mobile", address.mobile);
+        putString("address_receive_username", address.username);
+        putString("address_receive_province", address.province);
+        putString("address_receive_address", address.address);
+        putString("address_receive_street", address.street);
+        putString("address_receive_city", address.city);
+        putString("address_receive_area", address.area);
+        putString("address_receive_status",address.status);
+        putString("address_receive_tel",address.tel);
 
+    }
     /**
      * 取出User信息
      */
@@ -132,7 +149,23 @@ public class SPUtils {
         user.token = getString("user_token","");
         return user;
     }
-
+    /**
+     * 获取用户接收地址信息
+     */
+    public Address getReceiveAddress() {
+        Address address = new Address();
+        address.id = getString("address_receive_id", "");
+        address.mobile = getString("address_receive_mobile", "");
+        address.username = getString("address_receive_username", "");
+        address.province = getString("address_receive_province", "");
+        address.address = getString("address_receive_address", "");
+        address.street =  getString("address_receive_street", "");
+        address.city =  getString("address_receive_city", "");
+        address.area = getString("address_receive_area", "");
+        address.status =  getString("address_receive_status","");
+        address.tel =  getString("address_receive_tel","");
+        return address;
+    }
     /**
      * 清除User信息
      */

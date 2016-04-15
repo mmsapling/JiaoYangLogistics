@@ -51,6 +51,7 @@ public class BaseActivity
     public boolean isSuccess(BaseModel model) {
         closeProgress();
         if (model.code != 0 || !TextUtils.isEmpty(model.message)) {
+            ToastUtils.makePicTextShortToast(this, Constants.ICON_ERROR, model.message);
             return false;
         } else {
             return true;

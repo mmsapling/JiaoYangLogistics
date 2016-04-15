@@ -1,26 +1,28 @@
 package com.tylz.jiaoyanglogistics.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.astuetz.LazyViewPager;
 import com.astuetz.PagerSlidingTabStripExtends;
 import com.tylz.jiaoyanglogistics.R;
 import com.tylz.jiaoyanglogistics.activity.MyActivity;
 import com.tylz.jiaoyanglogistics.base.BaseFragment;
 import com.tylz.jiaoyanglogistics.conf.Constants;
-import com.tylz.jiaoyanglogistics.factory.FragmentFactory;
 import com.tylz.jiaoyanglogistics.util.UIUtils;
 import com.tylz.jiaoyanglogistics.view.TopMenu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,12 +44,15 @@ public class AddressBookFra
     @Bind(R.id.tabs)
     PagerSlidingTabStripExtends mTabs;
     @Bind(R.id.viewpager)
-    LazyViewPager               mViewpager;
+    ViewPager                   mViewpager;
     @Bind(R.id._container_address)
     LinearLayout                mContainerAddress;
-    private FragmentStatePagerAdapter mAdapter;
+    private FragmentPagerAdapter mAdapter;
     private String[] mTabTitles = UIUtils.getStrings(R.array.address_books);
     private MyActivity mActivity;
+    private List<Fragment> mFragments = new ArrayList<Fragment>();
+
+
 
     @Nullable
     @Override
@@ -58,13 +63,14 @@ public class AddressBookFra
         View view = View.inflate(mContext, R.layout.fra_address_book, null);
         ButterKnife.bind(this, view);
         init();
+        mFragments.clear();
+        ShipperAddressFra    shipperAddressFra    = new ShipperAddressFra();
+        ConSigneesAddressFra conSigneesAddressFra = new ConSigneesAddressFra();
+        mFragments.add(shipperAddressFra);
+        mFragments.add(conSigneesAddressFra);
         initView();
         return view;
     }
-
-
-
-
 
     private void init() {
         mActivity = (MyActivity) getActivity();
@@ -116,32 +122,46 @@ public class AddressBookFra
     }
 
     private void initView() {
-        mAdapter = new FragmentStatePagerAdapter(getChildFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                BaseFragment fragment = FragmentFactory.createFragment("AddressBookFra" + position);
-                return fragment;
-            }
-
-            @Override
-            public int getCount() {
-                if (mTabTitles != null) {
-                    return mTabTitles.length;
-                }
-                return 0;
-            }
-            @Override
-            public int getItemPosition(Object object) {
-                return PagerAdapter.POSITION_NONE;
-            }
-
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return mTabTitles[position];
-            }
-        };
+        mAdapter = new MyFragmentPageAdapter(getChildFragmentManager());
         mViewpager.setAdapter(mAdapter);
-        mTabs.setLazyViewPager(mViewpager);
+        mTabs.setViewPager(mViewpager);
 
+    }
+
+    private class MyFragmentPageAdapter
+            extends FragmentPagerAdapter
+    {
+
+        public MyFragmentPageAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            if(mFragments != null){
+                return mFragments.get(position);
+            }
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+            if(mFragments != null){
+                return mFragments.size();
+            }
+            return 0;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTabTitles[position];
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+       for(int i =0; i < mFragments.size();i++){
+           mFragments.get(i).onActivityResult(requestCode,resultCode,data);
+       }
     }
 }

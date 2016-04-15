@@ -102,19 +102,30 @@
                 android:text="@string/host_area"
                 />
 
-            <TextView
-                android:id="@+id/_tv_area"
-                style="@style/item_content_tv_style"
-                android:layout_toRightOf="@+id/edit_title_area"
-                android:text="@string/phone_number"/>
+            <!--三级联动-->
+            <LinearLayout
+                android:layout_toRightOf="@id/edit_title_area"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:scaleType="fitXY"
-                android:src="@mipmap/area"/>
+                <org.angmarch.views.NiceSpinner
+                    android:id="@+id/_ns_city"
+                    android:layout_width="@dimen/width_100"
+                    android:layout_height="@dimen/height_46"
+                    android:layout_weight="1"/>
+
+                <org.angmarch.views.NiceSpinner
+                    android:id="@+id/_ns_area"
+                    android:layout_width="@dimen/width_100"
+                    android:layout_height="@dimen/height_46"
+                    android:layout_weight="1"/>
+
+                <org.angmarch.views.NiceSpinner
+                    android:id="@+id/_ns_district"
+                    android:layout_width="@dimen/width_100"
+                    android:layout_height="@dimen/height_46"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
         </RelativeLayout>
 

@@ -16,6 +16,20 @@
         <item>版本更新</item>
         <item>关于我们</item>
     </string-array>
+    <!--状态提示-->
+    <string-array name="status">
+        <item>等待审核</item>
+        <item>审核通过</item>
+        <item>审核未通过</item>
+        <item>未审核</item>
+    </string-array>
+    <!--状态提示-->
+    <string-array name="bt_status">
+        <item>等待审核</item>
+        <item>审核通过</item>
+        <item>重新审核</item>
+        <item>提交审核</item>
+    </string-array>
     <string name="app_name">骄阳物流</string>
     <string name="exit_app">再按一次,退出应用程序</string>
     <!--下拉刷新和上拉加载数据-->
@@ -227,6 +241,10 @@
     <string name="error_parse_json">解析Json文件出错！</string>
     <string name="success_add_send_address">添加发货地址成功！</string>
     <string name="success_delete_receive_address">删除收货人地址成功！</string>
+    <string name="tip_delete">你确定删除吗？</string>
+    <string name="submit_check_status">提交审核</string>
+    <string name="hint_input_idcard_num">请输入身份证号！</string>
+    <string name="hint_input_select_icon">请选择图片！</string>
 
 
 </resources>

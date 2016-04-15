@@ -25,6 +25,5 @@ public class Address
     public String area; //所在地区
     public String status;//是否为默认地址
     public String tel;
-    public String fixMobile; //固定电话
     public int    postion; //记录位置
 }
